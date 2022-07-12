@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d8588b9b4d4e344b3c6c8da8806a1c, type: 3}
+  m_Name: GPUInstancerShaderBindings
+  m_EditorClassIdentifier: 
+  shaderInstances:
+  - name: MK/Toon/Free
+    instancedShader: {fileID: 4800000, guid: 4020a1dd63b4f044ea0f3c46196db840, type: 3}
+    modifiedDate: 09/21/2021 04:24:16.603
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Custom/Leaf
+    instancedShader: {fileID: 4800000, guid: e925d9ddc63b34746b1df21cc43c13fd, type: 3}
+    modifiedDate: 09/21/2021 04:24:18.537
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Custom/StaticBakeObj
+    instancedShader: {fileID: 4800000, guid: 7ec79a1c8f00a634ca3accfc0386ad86, type: 3}
+    modifiedDate: 09/21/2021 04:24:20.585
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Custom/Grass
+    instancedShader: {fileID: 4800000, guid: f98722d7dd1b9814e8a246e8d0f565b8, type: 3}
+    modifiedDate: 09/21/2021 04:24:22.218
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Custom/SceneSuf
+    instancedShader: {fileID: 4800000, guid: 2719aee87bad3e5448188d361f420e35, type: 3}
+    modifiedDate: 09/21/2021 04:24:23.645
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Lightbeam/Lightbeam Detail
+    instancedShader: {fileID: 4800000, guid: 10defe77b7079464485522f0f0fdd358, type: 3}
+    modifiedDate: 09/21/2021 04:24:24.913
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: GPUInstancer/MK/Toon/Free
+    instancedShader: {fileID: 4800000, guid: 4020a1dd63b4f044ea0f3c46196db840, type: 3}
+    modifiedDate: 09/21/2021 03:36:56.992
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: GPUInstancer/Custom/Leaf
+    instancedShader: {fileID: 4800000, guid: e925d9ddc63b34746b1df21cc43c13fd, type: 3}
+    modifiedDate: 09/21/2021 03:37:38.465
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: GPUInstancer/ColorVariationShader
+    instancedShader: {fileID: 4800000, guid: 8c09ceafd07c22648a98a34fdfcbe766, type: 3}
+    modifiedDate: 09/21/2021 04:30:01.281
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: GPUInstancer/AsteroidHaze
+    instancedShader: {fileID: 4800000, guid: a1fe6b00539636f49bae5f911c8ccc55, type: 3}
+    modifiedDate: 09/21/2021 04:38:34.117
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: Custom/Leaf_backup
+    instancedShader: {fileID: 4800000, guid: a2d88696a93ae524eb6d15c232e9cd8b, type: 3}
+    modifiedDate: 09/21/2021 20:34:44.722
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Lean/Common/Alpha
+    instancedShader: {fileID: 4800000, guid: 34d3cc5a99c3504498f02bc170bc790b, type: 3}
+    modifiedDate: 09/21/2021 20:50:34.858
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: GPUInstancer/Lean/Common/Alpha
+    instancedShader: {fileID: 4800000, guid: 34d3cc5a99c3504498f02bc170bc790b, type: 3}
+    modifiedDate: 09/21/2021 20:51:08.904
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: GPUInstancer/Custom/StaticBakeObj
+    instancedShader: {fileID: 4800000, guid: 7ec79a1c8f00a634ca3accfc0386ad86, type: 3}
+    modifiedDate: 09/23/2021 00:06:01.779
+    isOriginalInstanced: 1
+    extensionCode: 
+  - name: Universal Render Pipeline/Simple Lit
+    instancedShader: {fileID: 4800000, guid: f98a2ad39a31a9f4d8cd87098662bbca, type: 3}
+    modifiedDate: 09/23/2021 00:06:13.266
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: VacuumShaders/Terrain To Mesh/Legacy Shaders/Diffuse/2 Textures
+    instancedShader: {fileID: 4800000, guid: 2f91bc482e5ed39468ab0712505c9cd0, type: 3}
+    modifiedDate: 09/23/2021 00:14:26.286
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: VacuumShaders/Terrain To Mesh/Standard/Diffuse/2 Textures
+    instancedShader: {fileID: 4800000, guid: 6c64118b5cbee8445a95854604aecfe4, type: 3}
+    modifiedDate: 09/23/2021 00:14:48.433
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: ParticleCook/Transparent/AlphaBlend/Diffuse
+    instancedShader: {fileID: 4800000, guid: cc0f21bda1057374f93a7b27f1d864fa, type: 3}
+    modifiedDate: 09/23/2021 00:15:17.252
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Easy Decal/Legacy/Transparent Simple
+    instancedShader: {fileID: 4800000, guid: cddf7f70cd3ca43418ed88033b5e9337, type: 3}
+    modifiedDate: 09/23/2021 00:15:49.480
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Beautify/BeautifyMobile
+    instancedShader: {fileID: 4800000, guid: 5cee962c89521df4ab1871105758fbb2, type: 3}
+    modifiedDate: 09/23/2021 00:16:04.093
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: Custom/Bigmap_Items
+    instancedShader: {fileID: 4800000, guid: cdfe5743fc1ae834782dd2d70807f2c0, type: 3}
+    modifiedDate: 09/23/2021 00:17:15.083
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: JX2/Cutout_Outline
+    instancedShader: {fileID: 4800000, guid: 1ecf74ac2a558b84f81ba9a91cd51bd6, type: 3}
+    modifiedDate: 09/23/2021 00:17:29.958
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: StylizedWater/Mobile
+    instancedShader: {fileID: 4800000, guid: eebf43cd6d6d7134b8d9cda03234e4bb, type: 3}
+    modifiedDate: 09/23/2021 00:17:43.303
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: PaintTextureAdvance
+    instancedShader: {fileID: 4800000, guid: 5686da25c5fbf1e42b58e494e69b2ca8, type: 3}
+    modifiedDate: 09/23/2021 00:18:53.705
+    isOriginalInstanced: 0
+    extensionCode: 
+  - name: QuantumTheory/QuantumMetaCloud-AlphaClip
+    instancedShader: {fileID: 4800000, guid: 5f76e9e6cfab09c42954d1af896570f2, type: 3}
+    modifiedDate: 09/23/2021 00:19:09.783
+    isOriginalInstanced: 0
+    extensionCode: 
