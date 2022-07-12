@@ -164,8 +164,10 @@ public class TalkButtonController : MonoBehaviour
             }
             if(inProgressTask != null) //有进行中的任务
             {
+                Debug.Log("有进行中的submit任务");
                 if (taskHandle.IsSubmitable(inProgressTask.taskId))
                 {
+                    Debug.Log("可以submit任务");
                     this.allTalkContentOriginData = taskHandle.SubmitTaskTalkData(inProgressTask.taskId);
                     //执行提交任务完成回调
                     taskHandle.OnSubmitTaskComplete(inProgressTask.taskId);
@@ -176,11 +178,13 @@ public class TalkButtonController : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("不可以submit任务");
                     this.allTalkContentOriginData = taskHandle.InProgressTaskTalkData(inProgressTask.taskId);
                 }
             }
             else //没有正在进行中的任务，所以这次对话转为尝试接任务
             {
+                Debug.Log("没有正在进行中的任务，所以这次对话转为尝试接任务");
                 TryGetTask(taskHandle);
             }
         }

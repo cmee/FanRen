@@ -1564,7 +1564,7 @@ Animator:
   m_GameObject: {fileID: 561877236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bfe82747e4e5d5d40b2f1a4705893713, type: 2}
+  m_Controller: {fileID: 9100000, guid: 376505883a93e1d47b0f0aaf05100d87, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3e20ee4aad39aa845a7719cc9a6f5c0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8aefbe1f1bfba394e9c7d84caf15b5e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2892,7 +2892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectType: 0
-  globalMusicPrefab: {fileID: 2838896186700569328, guid: 04a30d1f0da027245977c76f8c2233b5, type: 3}
+  globalMusicPrefab: {fileID: 2838896186700569328, guid: 04b0f53afb0081940a4467d0299ec2fa, type: 3}
 --- !u!1 &1051372742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,6 +3094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -3756,7 +3757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1c8971b05a6dbb40a5085c81c67b23d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 331dc56bbd9bab9458fd47f59a8424f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

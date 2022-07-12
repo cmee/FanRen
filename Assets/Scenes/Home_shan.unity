@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: fbcb63a4d95485d4d9145f7edcd2707f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 68f9f5d44af3b9645877c21791f48df2, type: 2}
+      objectReference: {fileID: 9100000, guid: 07c1317630a46c84a8e9becb81608313, type: 2}
     - target: {fileID: 9500000, guid: fbcb63a4d95485d4d9145f7edcd2707f, type: 3}
       propertyPath: m_UpdateMode
       value: 1
@@ -2710,6 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

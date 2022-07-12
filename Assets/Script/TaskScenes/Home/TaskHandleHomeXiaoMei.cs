@@ -92,6 +92,9 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
     public override void OnSubmitTaskComplete(int taskId)
     {
         Debug.Log("红浆果数量-3，心境+1");
+        MyDBManager.GetInstance().ConnDB();
+        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(2);
+        MyDBManager.GetInstance().DeleteItemInBag(2, 3, roleItem.itemCount);
     }
 
     public override void OnTriggerTask(int taskId)

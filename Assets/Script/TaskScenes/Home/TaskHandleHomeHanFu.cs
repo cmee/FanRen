@@ -119,15 +119,6 @@ public class TaskHandleHomeHanFu : ITaskHandle
         return allTalkContent;
     }
 
-    
-
-    public bool IsCanSubmitTask()
-    {
-        MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1); //1是干柴
-        return roleItem.itemCount >= 5;
-    }
-
     public override bool IsTriggerable(int taskId)
     {
         MyDBManager.GetInstance().ConnDB();
@@ -136,17 +127,32 @@ public class TaskHandleHomeHanFu : ITaskHandle
 
     public override bool IsSubmitable(int taskId)
     {
-        MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1); //1是干柴
-        return roleItem.itemCount >= 5;
+        if(taskId == 1)
+        {
+            MyDBManager.GetInstance().ConnDB();
+            MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1); //1是干柴
+            return roleItem.itemCount >= 5;
+        }
+        else if(taskId == 5) //告别
+        {
+            return true;
+        }
+        Debug.LogError("逻辑错误TaskHandleHomeHanFu IsSubmitable taskId " + taskId);
+        return false;
     }
 
     public override void OnSubmitTaskComplete(int taskId)
     {
-        Debug.Log("干柴>=5，心境+1");
-        MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1);
-        MyDBManager.GetInstance().DeleteItemInBag(1, 5, roleItem.itemCount);
+        if(taskId == 1)
+        {
+            Debug.Log("干柴>=5，-5干柴");
+            MyDBManager.GetInstance().ConnDB();
+            MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1);
+            MyDBManager.GetInstance().DeleteItemInBag(1, 5, roleItem.itemCount);
+        }else if (taskId == 5)
+        {
+            Debug.Log("告别，心境+1");
+        }
     }
 
     public override void OnTriggerTask(int taskId)
