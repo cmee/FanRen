@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - saveMenu
+  - GlobalUIMusic
+  - Enemy
+  - HanLi
+  - canMove
+  - Terrain
+  - hp_HanLi
+  - Collide
+  - HPContainer
+  - UI_Canvas
+  - canAck
+  - SliderForAction
+  - PassButton
+  - ResetButton
+  - RootBattleInit
+  - CamZidan
+  - Ground
+  - NPC
+  - TalkUI
+  - DoTalkButton
+  - catchButtonTag
+  - TaskUICell
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - TAB_UI
+  - Water
+  - UI
+  - Task_UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
