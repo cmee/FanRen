@@ -31,9 +31,43 @@ public class CameraControl : MonoBehaviour
     float speed = 6f;
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
+    //    if (Input.GetKeyUp(KeyCode.LeftAlt))
+    //    {
+    //        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+    //    }
+
+    //    transform.position = player.transform.position - dir;
+
+    //    if(Input.GetAxis("Mouse ScrollWheel") > 0)
+    //    {         
+    //        transform.Translate(dir/ speed, Space.World);
+    //        dir = player.transform.position - transform.position;
+    //    }
+    //    else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+    //    {
+    //        transform.Translate(-dir/ speed, Space.World);
+    //        dir = player.transform.position - transform.position;
+    //    }
+
+    //    if (Input.GetAxis("Mouse X") != 0f)
+    //    {            
+    //        float mouseX = Input.GetAxis("Mouse X");
+    //        transform.RotateAround(player.position, player.up, mouseX * 400 * Time.deltaTime);
+    //        dir = player.transform.position - transform.position;
+    //    }
+
+    //    if (Input.GetAxis("Mouse Y") != 0f)
+    //    {            
+    //        float mouseY = Input.GetAxis("Mouse Y");
+    //        transform.Rotate(transform.right, -mouseY * 400 * Time.deltaTime, Space.World);
+    //    }
+    //}
+
+    private void LateUpdate()
+    {
         if (Input.GetKeyUp(KeyCode.LeftAlt))
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
@@ -41,26 +75,26 @@ public class CameraControl : MonoBehaviour
 
         transform.position = player.transform.position - dir;
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
-        {         
-            transform.Translate(dir/ speed, Space.World);
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            transform.Translate(dir / speed, Space.World);
             dir = player.transform.position - transform.position;
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            transform.Translate(-dir/ speed, Space.World);
+            transform.Translate(-dir / speed, Space.World);
             dir = player.transform.position - transform.position;
         }
 
         if (Input.GetAxis("Mouse X") != 0f)
-        {            
+        {
             float mouseX = Input.GetAxis("Mouse X");
             transform.RotateAround(player.position, player.up, mouseX * 400 * Time.deltaTime);
             dir = player.transform.position - transform.position;
         }
 
         if (Input.GetAxis("Mouse Y") != 0f)
-        {            
+        {
             float mouseY = Input.GetAxis("Mouse Y");
             transform.Rotate(transform.right, -mouseY * 400 * Time.deltaTime, Space.World);
         }

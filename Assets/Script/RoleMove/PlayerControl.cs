@@ -154,23 +154,38 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetBool("isRun", false);
         }
-    }
 
-    private void OnAnimatorMove()
-    {
         //Debug.Log("OnAnimatorMove()"); //mAnimator.deltaPosition.magnitude
-        if(horizontal != 0f || vertical != 0f)
+        if (horizontal != 0f || vertical != 0f)
         {
             //if (mRigidbody.IsSleeping()) {
             //    mRigidbody.WakeUp();
             //}
-            mRigidbody.MovePosition(mRigidbody.position + this.moveDir * 0.12f);
+            //mRigidbody.MovePosition(mRigidbody.position + this.moveDir * 0.12f);
+            mRigidbody.AddForce(this.moveDir * 300f, ForceMode.Force);
         }
         else
         {
             //mRigidbody.Sleep();
         }
+
     }
+
+    //private void OnAnimatorMove()
+    //{
+    //    //Debug.Log("OnAnimatorMove()"); //mAnimator.deltaPosition.magnitude
+    //    if(horizontal != 0f || vertical != 0f)
+    //    {
+    //        //if (mRigidbody.IsSleeping()) {
+    //        //    mRigidbody.WakeUp();
+    //        //}
+    //        mRigidbody.MovePosition(mRigidbody.position + this.moveDir * 0.12f);
+    //    }
+    //    else
+    //    {
+    //        //mRigidbody.Sleep();
+    //    }
+    //}
 
     //获取垂直水平向量(dir的正右边)
     //public static Vector3 GetRightSideVerticalDir(Vector3 startPos, Vector3 endPos, Vector3 _dir)

@@ -19,9 +19,6 @@ public class HomeInitScript : MonoBehaviour
         {
             sanShu.SetActive(true);
         }
-        //UIUtil.ShowTipsUI("倚天屠龙记 +10");
-        //UIUtil.ShowTipsUI("14天书 +10");
-        //UIUtil.ShowTipsUI("倚天屠龙记123 +10");
     }
 
     // Update is called once per frame
