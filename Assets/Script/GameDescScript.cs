@@ -20,7 +20,7 @@ public class GameDescScript : MonoBehaviour
     public void GoStartMenuScene()
     {
         SceneManager.LoadScene(0);
-        SceneManager.UnloadSceneAsync(5, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        //SceneManager.UnloadSceneAsync(5, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
     }
 
 }
