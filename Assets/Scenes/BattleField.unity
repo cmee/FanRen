@@ -2064,6 +2064,7 @@ GameObject:
   - component: {fileID: 1079890854}
   - component: {fileID: 1079890855}
   - component: {fileID: 1079890856}
+  - component: {fileID: 1079890857}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2170,9 +2171,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079890850}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cb69d673ee0b0a438f596970403c535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1079890857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079890850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40988b8c8c361749abbb9ac2d484ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBGMPath: 
@@ -3156,6 +3169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

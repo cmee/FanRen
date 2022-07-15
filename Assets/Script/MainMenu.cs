@@ -78,7 +78,7 @@ public class MainMenu : BaseMono
     {
         Debug.Log("OnStartButtonClick");
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-        SceneManager.UnloadSceneAsync(0, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        //SceneManager.UnloadSceneAsync(0, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
     }
 
     public void OnReplayButtonClick()
