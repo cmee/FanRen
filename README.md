@@ -1,3 +1,5 @@
+![Image text](https://github.com/rtsbtx/FanRen/blob/master/main_image.png?raw=true)
+
 ## 版权声明
 本项目完全开源免费，零商业目的，无任何内购或者广告，游戏中所有素材皆来自网络，如果觉得使用到的素材侵犯到你了，可以联系rtsczq1986@gmail.com
 作者仅仅是修仙小说爱好者，同时刚好是一名开发者，项目以分享学习unity为目的，禁止任何人把此项目中的任何素材或者代码应用于任何商业目的。 
