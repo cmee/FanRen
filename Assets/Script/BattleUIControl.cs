@@ -44,7 +44,7 @@ public class BattleUIControl : BaseMono
             sliderAvatarGO.transform.SetParent(avatarParent.transform);
             //todo 头像滑动速度公式待定
             sac.speed = roleCS.speed / 10f;
-            if (roleCS.teamNum == TeamNum.Us)
+            if (roleCS.teamNum == TeamNum.TEAM_ONE)
             {
                 sliderAvatarGO.GetComponent<Image>().color = Color.blue;
                 sliderAvatarGO.transform.position = new Vector2(avatarParent.transform.position.x - parentWidth / 2, avatarParent.transform.position.y - parentHeight / 2);

@@ -14,7 +14,7 @@ public class HanLi : BaseRole
         shentongs[2] = new Shentong("´ó¸ý½£Õó", 6, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa", 4);
         shentongs[2].ackType = ShentongAckType.Plane;
 
-        InitRoleData(100, 100, 50, 10, 4, shentongs, 13, 1, TeamNum.Us);
+        InitRoleData(100, 100, 50, 10, 4, shentongs, 13, 1, TeamNum.TEAM_ONE);
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;

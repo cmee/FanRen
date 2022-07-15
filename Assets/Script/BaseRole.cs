@@ -208,7 +208,9 @@ public enum RoleInBattleStatus
 
 public enum TeamNum
 {
-    Us = 1,
-    Enemy = 2
+    //Us = 1,
+    //Enemy = 2
+    TEAM_ONE = 1,
+    TEAM_TWO = 2
 }
 
