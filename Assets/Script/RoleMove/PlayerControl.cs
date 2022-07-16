@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     private Animator animator;
     private CharacterController characterController;
     //public float speed = 0.000000001F;
-    public float gravity = 20.0F;
+    //public float gravity = 20.0F;
 
     TalkButtonController talkButtonController = null;
 

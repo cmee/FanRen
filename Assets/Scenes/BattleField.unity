@@ -499,7 +499,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e72ae512a356fa74cb5726c06e15c521, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectType: 2
-  gridCubePrefab: {fileID: 1782208534121041745, guid: f01cd057e7852794597c21aa819e0e18, type: 3}
+  gridCubePrefab: {fileID: 1782208534121041745, guid: 0b71b7621bb701a4d8d00ec2fde012f7, type: 3}
 --- !u!154 &334698804
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -2063,8 +2063,8 @@ GameObject:
   - component: {fileID: 1079890851}
   - component: {fileID: 1079890854}
   - component: {fileID: 1079890855}
-  - component: {fileID: 1079890856}
   - component: {fileID: 1079890857}
+  - component: {fileID: 1079890858}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2164,18 +2164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectType: 0
---- !u!114 &1079890856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079890850}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cb69d673ee0b0a438f596970403c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1079890857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,7 +2176,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40988b8c8c361749abbb9ac2d484ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBGMPath: 
+--- !u!114 &1079890858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079890850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a444a116d4ad151418a59d264f0be731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectType: 0
+  globalMusicPrefab: {fileID: 0}
 --- !u!1 &1119155506
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,6 +4067,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9125318603432321298, guid: cab281a5282c6ac42a63e754aa2ba37b, type: 3}
+      propertyPath: teamNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125318603432321298, guid: cab281a5282c6ac42a63e754aa2ba37b, type: 3}
+      propertyPath: gameObjectType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9125318603432321299, guid: cab281a5282c6ac42a63e754aa2ba37b, type: 3}
       propertyPath: m_Name
       value: Enemy

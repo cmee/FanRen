@@ -8410,7 +8410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7926697a185286447b9644dc00a30f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 20
 --- !u!136 &408897056
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22400,7 +22399,6 @@ GameObject:
   - component: {fileID: 1078035752}
   - component: {fileID: 1078035751}
   - component: {fileID: 1078035754}
-  - component: {fileID: 1078035755}
   m_Layer: 15
   m_Name: Terrain
   m_TagString: Ground
@@ -22488,18 +22486,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1078035755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078035750}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cb69d673ee0b0a438f596970403c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1081424885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28320,7 +28306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfSceneIndex: -1
   targetSceneIndex: 4
 --- !u!65 &1342804941
 BoxCollider:
@@ -28979,7 +28964,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373338658}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a444a116d4ad151418a59d264f0be731, type: 3}
   m_Name: 
@@ -45629,7 +45614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfSceneIndex: -1
   targetSceneIndex: 1
 --- !u!65 &2097465868
 BoxCollider:

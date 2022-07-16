@@ -7,11 +7,11 @@ public class MyAudioManager: MonoBehaviour
 
     public static MyAudioManager instance;
 
-    private AudioSource bgm;
+    //private AudioSource bgm;
 
     private AudioSource soundEffects;
 
-    public string defaultBGMPath = null;
+    //public string defaultBGMPath = null;
 
     public static MyAudioManager GetInstance()
     {
@@ -22,8 +22,8 @@ public class MyAudioManager: MonoBehaviour
     {
         instance = this;
         soundEffects = gameObject.AddComponent<AudioSource>();
-        bgm = gameObject.AddComponent<AudioSource>();
-        bgm.loop = true;
+        //bgm = gameObject.AddComponent<AudioSource>();
+        //bgm.loop = true;
     }
 
     // Start is called before the first frame update
@@ -38,45 +38,45 @@ public class MyAudioManager: MonoBehaviour
 
     private void Start()
     {
-        if (defaultBGMPath != null)
-        {
-            PlayBGM(this.defaultBGMPath);
-        }
+        //if (defaultBGMPath != null)
+        //{
+        //    PlayBGM(this.defaultBGMPath);
+        //}
     }
 
-    string bgmPath;
+    //string bgmPath;
 
-    public void PlayBGM(string path)
-    {
-        if(this.bgmPath != null && this.bgmPath.Equals(path))
-        {
-            Debug.Log("重复播放bgm了，返回不执行 " + path);
-            return;
-        }
-        if (bgm.isPlaying)
-        {
-            bgm.Stop();
-        }
-        this.bgmPath = path;
-        AudioClip audioClip = Resources.Load<AudioClip>(path);
-        bgm.clip = audioClip;
-        bgm.volume = 0.5f;
-        bgm.Play();
-        Debug.Log("PlayBGM " + path);
-    }
+    //public void PlayBGM(string path)
+    //{
+    //    if(this.bgmPath != null && this.bgmPath.Equals(path))
+    //    {
+    //        Debug.Log("重复播放bgm了，返回不执行 " + path);
+    //        return;
+    //    }
+    //    if (bgm.isPlaying)
+    //    {
+    //        bgm.Stop();
+    //    }
+    //    this.bgmPath = path;
+    //    AudioClip audioClip = Resources.Load<AudioClip>(path);
+    //    bgm.clip = audioClip;
+    //    bgm.volume = 0.5f;
+    //    bgm.Play();
+    //    Debug.Log("PlayBGM " + path);
+    //}
 
-    public void PlayDefaultBGM()
-    {
-        PlayBGM(this.defaultBGMPath);
-    }
+    //public void PlayDefaultBGM()
+    //{
+    //    PlayBGM(this.defaultBGMPath);
+    //}
 
-    public void StopBGM()
-    {
-        if (bgm.isPlaying)
-        {
-            bgm.Stop();
-        }
-    }
+    //public void StopBGM()
+    //{
+    //    if (bgm.isPlaying)
+    //    {
+    //        bgm.Stop();
+    //    }
+    //}
 
     string path;
 

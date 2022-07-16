@@ -26,7 +26,7 @@ public class BattleController : BaseMono
     void Start()
     {
         Debug.Log("BattleController Start");
-        MyAudioManager.GetInstance().PlayBGM("BGM/BattleBGM01");
+        //MyAudioManager.GetInstance().PlayBGM("BGM/BattleBGM01");
     }
 
     public void Init(GameObject[] allRole)
