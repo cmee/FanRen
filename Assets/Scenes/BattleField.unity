@@ -2189,7 +2189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectType: 0
-  globalMusicPrefab: {fileID: 0}
+  globalMusicPrefab: {fileID: 2838896186700569328, guid: 88bda2c165a11c442b28adb5c3148d98, type: 3}
 --- !u!1 &1119155506
 GameObject:
   m_ObjectHideFlags: 0
