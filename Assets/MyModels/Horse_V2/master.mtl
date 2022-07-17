@@ -1,0 +1,12 @@
+newmtl MT_Horse_Body
+map_Ka mat0_c.jpg
+map_Kd mat0_c.jpg
+newmtl MT_Horse_Eye
+map_Ka mat1_c.jpg
+map_Kd mat1_c.jpg
+newmtl MT_Horse_Hair
+map_Ka mat2_c.jpg
+map_Kd mat2_c.jpg
+newmtl MT_Horse_Saddle
+map_Ka mat3_c.jpg
+map_Kd mat3_c.jpg
