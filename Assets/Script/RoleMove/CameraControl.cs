@@ -5,66 +5,43 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 
-    private Transform player;
+    private GameObject player;
 
+    //镜头指向人物位置（含垂直偏移量）
     private Vector3 dir;
+
+    public bool isVerticalRotateAroundSelf = false;
+
+    public float initCameraHeight = 6;
+    public float lookAtTargetHeightOffset = 2;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 cp = player.transform.position - player.forward*6;
-        cp.y += 5; 
+        //人物初始位置的背后位置
+        Vector3 cp = player.transform.position - player.transform.forward * initCameraHeight;
+        cp.y += initCameraHeight; 
+
+        //设置镜头初始位置
         this.gameObject.transform.position = cp;
 
-        //this.gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5, player.transform.position.z);
-        //this.gameObject.transform.Translate(player.forward * 7);
-        this.gameObject.transform.LookAt(player);
+        Vector3 playerPosition = player.transform.position;
+        playerPosition += Vector3.up * lookAtTargetHeightOffset;
+        this.gameObject.transform.LookAt(playerPosition);
 
-        dir = player.transform.position - transform.position;
-        //Cursor.lockState = CursorLockMode.Locked;
+        CalDir();
+    }
+
+    private void CalDir()
+    {
+        dir = player.transform.position + Vector3.up * lookAtTargetHeightOffset - transform.position;
     }
 
     //摄像头放大缩小速度
-    float speed = 6f;
-
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //    if (Input.GetKeyUp(KeyCode.LeftAlt))
-    //    {
-    //        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
-    //    }
-
-    //    transform.position = player.transform.position - dir;
-
-    //    if(Input.GetAxis("Mouse ScrollWheel") > 0)
-    //    {         
-    //        transform.Translate(dir/ speed, Space.World);
-    //        dir = player.transform.position - transform.position;
-    //    }
-    //    else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-    //    {
-    //        transform.Translate(-dir/ speed, Space.World);
-    //        dir = player.transform.position - transform.position;
-    //    }
-
-    //    if (Input.GetAxis("Mouse X") != 0f)
-    //    {            
-    //        float mouseX = Input.GetAxis("Mouse X");
-    //        transform.RotateAround(player.position, player.up, mouseX * 400 * Time.deltaTime);
-    //        dir = player.transform.position - transform.position;
-    //    }
-
-    //    if (Input.GetAxis("Mouse Y") != 0f)
-    //    {            
-    //        float mouseY = Input.GetAxis("Mouse Y");
-    //        transform.Rotate(transform.right, -mouseY * 400 * Time.deltaTime, Space.World);
-    //    }
-    //}
+    float speed = 1f;
 
     private void LateUpdate()
     {
@@ -73,30 +50,58 @@ public class CameraControl : MonoBehaviour
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
-        transform.position = player.transform.position - dir;
+        transform.position = player.transform.position + Vector3.up * lookAtTargetHeightOffset - dir;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            transform.Translate(dir / speed, Space.World);
-            dir = player.transform.position - transform.position;
+            if (Vector3.Distance(player.transform.position + Vector3.up * lookAtTargetHeightOffset, transform.position) > 3)
+            {
+                transform.Translate(dir.normalized * speed, Space.World);
+                CalDir();
+            }
+            
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            transform.Translate(-dir / speed, Space.World);
-            dir = player.transform.position - transform.position;
+            if (Vector3.Distance(player.transform.position + Vector3.up * lookAtTargetHeightOffset, transform.position) < 10)
+            {
+                transform.Translate(-dir.normalized * speed, Space.World);
+                CalDir();
+            }
         }
 
         if (Input.GetAxis("Mouse X") != 0f)
         {
             float mouseX = Input.GetAxis("Mouse X");
-            transform.RotateAround(player.position, player.up, mouseX * 400 * Time.deltaTime);
-            dir = player.transform.position - transform.position;
+            transform.RotateAround(player.transform.position + Vector3.up * lookAtTargetHeightOffset, player.transform.up, mouseX * 400 * Time.deltaTime);
+            CalDir();
         }
 
         if (Input.GetAxis("Mouse Y") != 0f)
         {
             float mouseY = Input.GetAxis("Mouse Y");
-            transform.Rotate(transform.right, -mouseY * 400 * Time.deltaTime, Space.World);
+            if (isVerticalRotateAroundSelf)
+            {
+                transform.Rotate(transform.right, -mouseY * 400 * Time.deltaTime, Space.World);
+            }
+            else
+            {
+                if(mouseY > 0)
+                {
+                    if (transform.rotation.eulerAngles.x > 20)
+                    {
+                        transform.RotateAround(player.transform.position + Vector3.up * lookAtTargetHeightOffset, transform.right, -mouseY * 400 * Time.deltaTime);
+                    }
+                }
+                else if(mouseY < 0)
+                {
+                    if (transform.rotation.eulerAngles.x < 70)
+                    {
+                        transform.RotateAround(player.transform.position + Vector3.up * lookAtTargetHeightOffset, transform.right, -mouseY * 400 * Time.deltaTime);
+                    }
+                }
+                CalDir();
+            }
         }
     }
 

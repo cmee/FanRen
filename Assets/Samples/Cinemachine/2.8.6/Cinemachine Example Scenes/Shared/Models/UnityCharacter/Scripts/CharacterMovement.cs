@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         else
             speed = Mathf.Abs(input.x) + Mathf.Abs(input.y);
 
-        speed = Mathf.Clamp(speed, 0f, 1f);
+        speed = Mathf.Clamp(speed, 0f, 1f); 
         speed = Mathf.SmoothDamp(anim.GetFloat("Speed"), speed, ref velocity, 0.1f);
         anim.SetFloat("Speed", speed);
 
@@ -62,14 +62,20 @@ public class CharacterMovement : MonoBehaviour
         if (input != Vector2.zero && targetDirection.magnitude > 0.1f)
         {
             Vector3 lookDirection = targetDirection.normalized;
-            freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
+
+               
+
+                freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
             var diferenceRotation = freeRotation.eulerAngles.y - transform.eulerAngles.y;
             var eulerY = transform.eulerAngles.y;
 
             if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = freeRotation.eulerAngles.y;
             var euler = new Vector3(0, eulerY, 0);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
+               
+                Vector3 a = Vector3.RotateTowards(transform.forward, lookDirection, 0.5f, 0f);
+                transform.rotation = Quaternion.LookRotation(a);
         }
 	}
 
@@ -78,14 +84,19 @@ public class CharacterMovement : MonoBehaviour
         if (!useCharacterForward)
         {
             turnSpeedMultiplier = 1f;
-            var forward = mainCamera.transform.TransformDirection(Vector3.forward);
-            forward.y = 0;
+            //var forward = mainCamera.transform.TransformDirection(Vector3.forward);
+                var forward = mainCamera.transform.forward;
+                forward.y = 0;
 
             //get the right-facing direction of the referenceTransform
-            var right = mainCamera.transform.TransformDirection(Vector3.right);
+            //var right = mainCamera.transform.TransformDirection(Vector3.right);
+                //Debug.Log("right " + right);
+                //Debug.Log("mainCamera.transform.right " + mainCamera.transform.right);
 
-            // determine the direction the player will face based on input and the referenceTransform's right and forward directions
-            targetDirection = input.x * right + input.y * forward;
+                var right = mainCamera.transform.right;
+
+                // determine the direction the player will face based on input and the referenceTransform's right and forward directions
+                targetDirection = input.x * right + input.y * forward;
         }
         else
         {

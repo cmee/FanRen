@@ -28730,6 +28730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd85b92f074604e4c979e37751cf2dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVerticalRotateAroundSelf: 0
+  initCameraHeight: 5
+  initAddCameraHeight: 2
 --- !u!114 &1373338660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46956,19 +46959,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7139261
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7002212
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -46976,7 +46979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.889
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8026676563232646903, guid: 4d5750d8566ec384794c2e39919b9c05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
