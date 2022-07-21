@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.0050339354, y: 0, z: 0.015}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5093329469997743443}
   m_RootOrder: 0
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -92,7 +94,6 @@ GameObject:
   - component: {fileID: 5093329469997743443}
   - component: {fileID: 222633695}
   - component: {fileID: 8522751351285850189}
-  - component: {fileID: 6877049991955894382}
   - component: {fileID: 6441496388134050884}
   m_Layer: 0
   m_Name: Sark_1
@@ -111,6 +112,7 @@ Transform:
   m_LocalRotation: {x: 0.0015796289, y: 0.70710504, z: 0.70710504, w: -0.0015796289}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.290906, y: 1.290906, z: 1.290906}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6968781666460516671}
   - {fileID: 1739900099045285931}
@@ -135,7 +137,7 @@ NavMeshObstacle:
   m_TimeToStationary: 0.5
 --- !u!95 &8522751351285850189
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,23 +150,11 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6877049991955894382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6923872431525625808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d401289c531c82d479cd51089da35631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 1827226128182048838, guid: b9431bf6c713ca945b2061c00376ecf0, type: 3}
 --- !u!114 &6441496388134050884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +196,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.38047138, y: 0.36507028, z: 0.3271622}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5093329469997743443}
   m_RootOrder: 1
@@ -229,6 +220,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

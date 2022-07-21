@@ -1,0 +1,337 @@
+fileFormatVersion: 2
+guid: 1021c3a1a114cd149aa3d292fe946e87
+timeCreated: 1441554181
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: German Shepherd
+    100002: German ShepherdHub003
+    100004: German ShepherdHub004
+    100006: German ShepherdHub005
+    100008: German ShepherdHub005Bone001
+    100010: German ShepherdHub005Bone002
+    100012: German ShepherdHub005Bone003
+    100014: German ShepherdLLeg1
+    100016: German ShepherdLLeg1 1
+    100018: German ShepherdLLeg2
+    100020: German ShepherdLLeg2 1
+    100022: German ShepherdLLeg3
+    100024: German ShepherdLLeg3 1
+    100026: German ShepherdLLegAnkle
+    100028: German ShepherdLLegAnkle 1
+    100030: German ShepherdLLegPlatform
+    100032: German ShepherdLLegPlatform 1
+    100034: German ShepherdRLeg1
+    100036: German ShepherdRLeg1 1
+    100038: German ShepherdRLeg2
+    100040: German ShepherdRLeg2 1
+    100042: German ShepherdRLeg3
+    100044: German ShepherdRLeg3 1
+    100046: German ShepherdRLegAnkle
+    100048: German ShepherdRLegAnkle 1
+    100050: German ShepherdRLegPlatform
+    100052: German ShepherdRLegPlatform 1
+    100054: German ShepherdSpine1
+    100056: German ShepherdSpine1 1
+    100058: German ShepherdSpine2
+    100060: German ShepherdSpine2 1
+    100062: German ShepherdSpine3
+    100064: German ShepherdTail1
+    100066: German ShepherdTail2
+    100068: German ShepherdTail3
+    100070: German ShepherdTail4
+    100072: German ShepherdTail5
+    100074: Wolf
+    100076: //RootNode
+    100078: Wolf 1
+    100080: Wolf2
+    100082: Wolf3
+    100084: Wolf4
+    100086: Wolf_tail
+    100088: WolfHub003
+    100090: WolfHub004
+    100092: WolfHub005
+    100094: WolfHub005Bone001
+    100096: WolfHub005Bone002
+    100098: WolfHub005Bone003
+    100100: WolfLLeg1
+    100102: WolfLLeg1 1
+    100104: WolfLLeg2
+    100106: WolfLLeg2 1
+    100108: WolfLLeg3
+    100110: WolfLLeg3 1
+    100112: WolfLLegAnkle
+    100114: WolfLLegAnkle 1
+    100116: WolfLLegPlatform
+    100118: WolfLLegPlatform 1
+    100120: WolfRLeg1
+    100122: WolfRLeg1 1
+    100124: WolfRLeg2
+    100126: WolfRLeg2 1
+    100128: WolfRLeg3
+    100130: WolfRLeg3 1
+    100132: WolfRLegAnkle
+    100134: WolfRLegAnkle 1
+    100136: WolfRLegPlatform
+    100138: WolfSpine1
+    100140: WolfSpine1 1
+    100142: WolfSpine2
+    100144: WolfSpine2 1
+    100146: WolfSpine3
+    100148: WolfTail5
+    100150: WolfRLegPlatform 1
+    400000: German Shepherd
+    400002: German ShepherdHub003
+    400004: German ShepherdHub004
+    400006: German ShepherdHub005
+    400008: German ShepherdHub005Bone001
+    400010: German ShepherdHub005Bone002
+    400012: German ShepherdHub005Bone003
+    400014: German ShepherdLLeg1
+    400016: German ShepherdLLeg1 1
+    400018: German ShepherdLLeg2
+    400020: German ShepherdLLeg2 1
+    400022: German ShepherdLLeg3
+    400024: German ShepherdLLeg3 1
+    400026: German ShepherdLLegAnkle
+    400028: German ShepherdLLegAnkle 1
+    400030: German ShepherdLLegPlatform
+    400032: German ShepherdLLegPlatform 1
+    400034: German ShepherdRLeg1
+    400036: German ShepherdRLeg1 1
+    400038: German ShepherdRLeg2
+    400040: German ShepherdRLeg2 1
+    400042: German ShepherdRLeg3
+    400044: German ShepherdRLeg3 1
+    400046: German ShepherdRLegAnkle
+    400048: German ShepherdRLegAnkle 1
+    400050: German ShepherdRLegPlatform
+    400052: German ShepherdRLegPlatform 1
+    400054: German ShepherdSpine1
+    400056: German ShepherdSpine1 1
+    400058: German ShepherdSpine2
+    400060: German ShepherdSpine2 1
+    400062: German ShepherdSpine3
+    400064: German ShepherdTail1
+    400066: German ShepherdTail2
+    400068: German ShepherdTail3
+    400070: German ShepherdTail4
+    400072: German ShepherdTail5
+    400074: Wolf
+    400076: //RootNode
+    400078: Wolf 1
+    400080: Wolf2
+    400082: Wolf3
+    400084: Wolf4
+    400086: Wolf_tail
+    400088: WolfHub003
+    400090: WolfHub004
+    400092: WolfHub005
+    400094: WolfHub005Bone001
+    400096: WolfHub005Bone002
+    400098: WolfHub005Bone003
+    400100: WolfLLeg1
+    400102: WolfLLeg1 1
+    400104: WolfLLeg2
+    400106: WolfLLeg2 1
+    400108: WolfLLeg3
+    400110: WolfLLeg3 1
+    400112: WolfLLegAnkle
+    400114: WolfLLegAnkle 1
+    400116: WolfLLegPlatform
+    400118: WolfLLegPlatform 1
+    400120: WolfRLeg1
+    400122: WolfRLeg1 1
+    400124: WolfRLeg2
+    400126: WolfRLeg2 1
+    400128: WolfRLeg3
+    400130: WolfRLeg3 1
+    400132: WolfRLegAnkle
+    400134: WolfRLegAnkle 1
+    400136: WolfRLegPlatform
+    400138: WolfSpine1
+    400140: WolfSpine1 1
+    400142: WolfSpine2
+    400144: WolfSpine2 1
+    400146: WolfSpine3
+    400148: WolfTail5
+    400150: WolfRLegPlatform 1
+    4300000: Wolf
+    7400000: walk
+    9500000: //RootNode
+    13700000: Wolf
+    13700002: Wolf 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: German ShepherdRLegPlatform
+        weight: 1
+      - path: Wolf
+        weight: 1
+      - path: Wolf 1
+        weight: 1
+      - path: WolfHub003
+        weight: 1
+      - path: WolfHub003/Wolf_tail
+        weight: 1
+      - path: WolfHub003/Wolf_tail/Wolf2
+        weight: 1
+      - path: WolfHub003/Wolf_tail/Wolf2/Wolf3
+        weight: 1
+      - path: WolfHub003/Wolf_tail/Wolf2/Wolf3/Wolf4
+        weight: 1
+      - path: WolfHub003/Wolf_tail/Wolf2/Wolf3/Wolf4/WolfTail5
+        weight: 1
+      - path: WolfHub003/WolfLLeg1
+        weight: 1
+      - path: WolfHub003/WolfLLeg1/WolfLLeg2
+        weight: 1
+      - path: WolfHub003/WolfLLeg1/WolfLLeg2/WolfLLeg3
+        weight: 1
+      - path: WolfHub003/WolfLLeg1/WolfLLeg2/WolfLLeg3/WolfLLegAnkle
+        weight: 1
+      - path: WolfHub003/WolfRLeg1
+        weight: 1
+      - path: WolfHub003/WolfRLeg1/WolfRLeg2
+        weight: 1
+      - path: WolfHub003/WolfRLeg1/WolfRLeg2/WolfRLeg3
+        weight: 1
+      - path: WolfHub003/WolfRLeg1/WolfRLeg2/WolfRLeg3/WolfRLegAnkle
+        weight: 1
+      - path: WolfHub003/WolfSpine1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfLLeg1 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfLLeg1 1/WolfLLeg2
+          1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfLLeg1 1/WolfLLeg2
+          1/WolfLLeg3 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfLLeg1 1/WolfLLeg2
+          1/WolfLLeg3 1/WolfLLegAnkle 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfRLeg1 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfRLeg1 1/WolfRLeg2
+          1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfRLeg1 1/WolfRLeg2
+          1/WolfRLeg3 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfRLeg1 1/WolfRLeg2
+          1/WolfRLeg3 1/WolfRLegAnkle 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1/WolfSpine2
+          1
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1/WolfSpine2
+          1/WolfHub005
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1/WolfSpine2
+          1/WolfHub005/WolfHub005Bone001
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1/WolfSpine2
+          1/WolfHub005/WolfHub005Bone002
+        weight: 1
+      - path: WolfHub003/WolfSpine1/WolfSpine2/WolfSpine3/WolfHub004/WolfSpine1 1/WolfSpine2
+          1/WolfHub005/WolfHub005Bone003
+        weight: 1
+      - path: WolfLLegPlatform
+        weight: 1
+      - path: WolfLLegPlatform 1
+        weight: 1
+      - path: WolfRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
