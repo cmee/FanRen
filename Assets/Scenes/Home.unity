@@ -28732,7 +28732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVerticalRotateAroundSelf: 0
   initCameraHeight: 5
-  initAddCameraHeight: 2
+  lookAtTargetHeightOffset: 2
 --- !u!114 &1373338660
 MonoBehaviour:
   m_ObjectHideFlags: 0
