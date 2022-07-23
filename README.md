@@ -1,4 +1,4 @@
-![Image](https://raw.githubusercontent.com/rtsbtx/FanRen/master/.github/images/imagesmain_image.jpg)
+![imagesmain_image](https://user-images.githubusercontent.com/1829123/180601524-c4c08493-2d13-47d7-b4f9-2d1622b58e6c.jpg)
 
 ## 版权声明
 本项目完全开源免费，零商业目的，无任何内购或者广告，游戏中所有素材皆来自网络，如果觉得使用到的素材侵犯到你了，可以联系rtsczq1986@gmail.com
