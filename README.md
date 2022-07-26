@@ -1,3 +1,5 @@
+[English Page](https://github.com/rtsbtx/FanRen/wiki/Notice-:-copyright-statement)
+
 ![imagesmain_image](https://user-images.githubusercontent.com/1829123/180601524-c4c08493-2d13-47d7-b4f9-2d1622b58e6c.jpg)
 
 ## 版权声明
