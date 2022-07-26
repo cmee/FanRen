@@ -32,7 +32,10 @@ public class CameraControl : MonoBehaviour
         playerPosition += Vector3.up * lookAtTargetHeightOffset;
         this.gameObject.transform.LookAt(playerPosition);
 
+        
         CalDir();
+        //transform.Translate(dir.normalized * speed, Space.World);
+        //CalDir();
     }
 
     private void CalDir()

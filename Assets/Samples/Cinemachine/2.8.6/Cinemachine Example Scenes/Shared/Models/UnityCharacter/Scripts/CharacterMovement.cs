@@ -65,17 +65,17 @@ public class CharacterMovement : MonoBehaviour
 
                
 
-                freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
+            freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
             var diferenceRotation = freeRotation.eulerAngles.y - transform.eulerAngles.y;
             var eulerY = transform.eulerAngles.y;
 
             if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = freeRotation.eulerAngles.y;
             var euler = new Vector3(0, eulerY, 0);
 
-                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
                
-                Vector3 a = Vector3.RotateTowards(transform.forward, lookDirection, 0.5f, 0f);
-                transform.rotation = Quaternion.LookRotation(a);
+                //Vector3 a = Vector3.RotateTowards(transform.forward, lookDirection, 0.5f, 0f);
+                //transform.rotation = Quaternion.LookRotation(a);
         }
 	}
 

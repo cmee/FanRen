@@ -26,6 +26,7 @@ TagManager:
   - DoTalkButton
   - catchButtonTag
   - TaskUICell
+  - Entrance
   layers:
   - Default
   - TransparentFX
@@ -34,8 +35,8 @@ TagManager:
   - Water
   - UI
   - Task_UI
-  - 
-  - 
+  - Ground
+  - Player
   - 
   - 
   - 

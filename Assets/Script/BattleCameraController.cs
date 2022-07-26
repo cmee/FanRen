@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoleCameraController : BaseMono
+public class BattleCameraController : BaseMono
 {
     private Transform player;
     private Vector3 dir;
@@ -15,7 +15,7 @@ public class RoleCameraController : BaseMono
     //Vector3 roleHeadPointToCamera = Vector3.zero;
 
     //GameObject terrainGO;
-    TerrainCollider terrainCollider;
+    private TerrainCollider terrainCollider;
 
     void Start()
     {
@@ -74,7 +74,7 @@ public class RoleCameraController : BaseMono
         stopUpdateFlag = false;
     }
 
-    void Update()
+    void LateUpdate()
     {
 
         //if (Input.GetKeyUp(KeyCode.LeftAlt))
@@ -91,14 +91,15 @@ public class RoleCameraController : BaseMono
             if (Input.GetAxis("Mouse X") != 0f)
             {
                 float mouseX = Input.GetAxis("Mouse X");
-                transform.RotateAround(player.position, Vector3.up, mouseX * 600 * Time.deltaTime);
+                transform.RotateAround(player.position, player.up, mouseX * 600 * Time.deltaTime);
                 dir = player.transform.position - transform.position;
             }
 
             if (Input.GetAxis("Mouse Y") != 0f)
             {
                 float mouseY = Input.GetAxis("Mouse Y");
-                transform.Rotate(Vector3.right, -mouseY * 600 * Time.deltaTime);
+                transform.RotateAround(player.position, transform.right, -mouseY * 600 * Time.deltaTime);
+                dir = player.transform.position - transform.position;
             }
         }
 

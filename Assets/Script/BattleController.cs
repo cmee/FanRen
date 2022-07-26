@@ -627,7 +627,7 @@ public class BattleController : BaseMono
 
         ChangeGridOnClickRoleOrShentong();
 
-        RoleCameraController rcc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RoleCameraController>();
+        BattleCameraController rcc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BattleCameraController>();
         rcc.SetSelectedRole(activingRoleGO);
 
     }

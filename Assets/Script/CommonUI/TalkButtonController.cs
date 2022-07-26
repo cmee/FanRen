@@ -110,6 +110,7 @@ public class TalkButtonController : MonoBehaviour
 
     public void HideTalkButton()
     {
+        if (talkButton.alpha == 0) return;
         talkButton.alpha = 0;
         talkButton.interactable = false;
         talkButton.blocksRaycasts = false;
