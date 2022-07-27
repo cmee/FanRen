@@ -28,7 +28,7 @@ public class TalkButtonController : MonoBehaviour
         texts = talkUIGO.GetComponentsInChildren<Text>();
     }
 
-    public void ShowTalkButton(SmallSceneRoleController smallSceneRoleController)
+    public void ShowTalkButton(NPCCommonScript npcCommonScript)
     {
         talkButton.alpha = 1;
         talkButton.interactable = true;
@@ -40,7 +40,7 @@ public class TalkButtonController : MonoBehaviour
         //this.allTalkContentOriginData = allTalkContentOriginData;
         //HandlerTalkData(allTalkContentOriginData);
 
-        this.mSmallSceneRoleController = smallSceneRoleController;
+        this.npcCommonScript = npcCommonScript;
 
         //Debug.Log("this.allTalkContentOriginData count : " + this.allTalkContentOriginData.Count);
 
@@ -50,7 +50,7 @@ public class TalkButtonController : MonoBehaviour
     //string dfName;
     //string dfTalkContent;
 
-    SmallSceneRoleController mSmallSceneRoleController;
+    NPCCommonScript npcCommonScript;
     Queue allTalkContentOriginData;
     Queue allTalkContentHandleData = new Queue();
 
@@ -148,9 +148,9 @@ public class TalkButtonController : MonoBehaviour
     {
         MyDBManager.GetInstance().ConnDB();
 
-        List<MyDBManager.RoleTask> leaderActorWithNPCSubmitTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCSubmitTasks(mSmallSceneRoleController.roleId);
+        List<MyDBManager.RoleTask> leaderActorWithNPCSubmitTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCSubmitTasks(npcCommonScript.roleId);
 
-        ITaskHandle taskHandle = ITaskHandle.TaskHandleBuilder.Build(mSmallSceneRoleController.roleId);
+        ITaskHandle taskHandle = ITaskHandle.TaskHandleBuilder.Build(npcCommonScript.roleId);
 
         if(leaderActorWithNPCSubmitTasks.Count > 0) //该NPC有对应的提交任务
         {
@@ -200,7 +200,7 @@ public class TalkButtonController : MonoBehaviour
 
     private void TryGetTask(ITaskHandle taskHandle)
     {
-        List<MyDBManager.RoleTask> leaderActorWithNPCTriggerTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCTriggerTasks(mSmallSceneRoleController.roleId);
+        List<MyDBManager.RoleTask> leaderActorWithNPCTriggerTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCTriggerTasks(npcCommonScript.roleId);
         if (leaderActorWithNPCTriggerTasks.Count == 0) //该NPC没有可触发任务
         {
             this.allTalkContentOriginData = taskHandle.GeneralTalkData(); //无任务NPC的对话也有可能跟着进程发生改变

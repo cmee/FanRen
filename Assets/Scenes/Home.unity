@@ -12956,6 +12956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf3378bb2ee1b5449ddd9a5468657fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   roleId: 4
 --- !u!136 &645540943
 CapsuleCollider:
@@ -17163,6 +17164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf3378bb2ee1b5449ddd9a5468657fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   roleId: 6
 --- !u!136 &866672956
 CapsuleCollider:
@@ -20852,6 +20854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf3378bb2ee1b5449ddd9a5468657fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   roleId: 2
 --- !u!1001 &1027617936
 PrefabInstance:
@@ -24593,6 +24596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf3378bb2ee1b5449ddd9a5468657fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   roleId: 5
 --- !u!1 &1155074547 stripped
 GameObject:
@@ -28293,6 +28297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   targetSceneIndex: 4
 --- !u!65 &1342804941
 BoxCollider:
@@ -35216,6 +35221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf3378bb2ee1b5449ddd9a5468657fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   roleId: 3
 --- !u!136 &1643346601
 CapsuleCollider:
@@ -45626,6 +45632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   targetSceneIndex: 1
 --- !u!65 &2097465868
 BoxCollider:

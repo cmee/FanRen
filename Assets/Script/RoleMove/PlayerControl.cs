@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -17,6 +15,9 @@ public class PlayerControl : MonoBehaviour
     Vector3 moveDir;
 
     public float moveSpeed = 5f;
+
+    private GameObject lastHitGameObject;
+    private IColliderWithCC colliderWithCCScript;
 
     private void Awake()
     {
@@ -50,28 +51,18 @@ public class PlayerControl : MonoBehaviour
 
     private void DoMove()
     {
-        //if (horizontal != 0f || vertical != 0f)
-        //{
-        //    mRigidbody.AddForce(this.moveDir * 300f, ForceMode.Force);
-        //}
-
-        //cc.Move(this.moveDir * 0.1f);
-        //cc.SimpleMove(this.moveDir * moveSpeed);
-
         if (!cc.isGrounded)
         {
             this.moveDir += new Vector3(0f, -1f, 0f);
         }
         CollisionFlags cf = cc.Move(this.moveDir / 8);
 
-        if(cf == CollisionFlags.None && this.moveDir != Vector3.zero)
+        if(colliderWithCCScript != null && cf == CollisionFlags.None && this.moveDir != Vector3.zero)
         {
-            ssrc?.OnPlayerCollisionExit(this.gameObject);
+            colliderWithCCScript.OnPlayerCollisionExit(this.gameObject);
             lastHitGameObject = null;
-            ssrc = null;
+            colliderWithCCScript = null;
         }
-
-        Debug.Log("cf : " + cf.ToString());
     }
 
     float horizontal;
@@ -105,7 +96,6 @@ public class PlayerControl : MonoBehaviour
             DoTurn(vertical > 0 ? camForword : -camForword);
 
         }
-
         if (horizontal != 0f || vertical != 0f)
         {
             animator?.SetBool("isRun", true);
@@ -115,9 +105,7 @@ public class PlayerControl : MonoBehaviour
             animator?.SetBool("isRun", false);
             this.moveDir = Vector3.zero;
         }
-
         DoMove();
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -125,16 +113,13 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("PlayerControl OnCollisionEnter");
     }
 
-    private GameObject lastHitGameObject;
-    private SmallSceneRoleController ssrc;
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.gameObject.tag.Equals("NPC"))
+        if (lastHitGameObject == hit.collider.gameObject) return;
+        colliderWithCCScript = hit.collider.gameObject.GetComponent<IColliderWithCC>();
+        if(colliderWithCCScript != null)
         {
-            if (lastHitGameObject == hit.collider.gameObject) return;
-            ssrc = hit.collider.gameObject.GetComponent<SmallSceneRoleController>();
-            ssrc.OnPlayerCollisionEnter(this.gameObject);
+            colliderWithCCScript.OnPlayerCollisionEnter(this.gameObject);
             lastHitGameObject = hit.collider.gameObject;
             Debug.Log("OnControllerColliderHit " + hit.collider.gameObject.name);
         }

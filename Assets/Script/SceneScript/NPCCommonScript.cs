@@ -1,8 +1,7 @@
 using cakeslice;
-using System.Collections;
 using UnityEngine;
 
-public class SmallSceneRoleController : MonoBehaviour
+public class NPCCommonScript : BaseMono, IColliderWithCC
 {
 
     //Queue allTalkContent = new Queue();
@@ -49,26 +48,6 @@ public class SmallSceneRoleController : MonoBehaviour
             talkButtonController.HideTalkButton();
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision != null && collision.gameObject.tag.Equals("Player"))
-    //    {
-    //        if (outline != null) outline.enabled = true;
-    //        Debug.Log(this.gameObject.name + ": 韩立过来了");
-    //        talkButtonController.ShowTalkButton(this);
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision != null && collision.gameObject.tag.Equals("Player"))
-    //    {
-    //        if (outline != null) outline.enabled = false;
-    //        Debug.Log(this.gameObject.name + ": 韩立离开了");
-    //        talkButtonController.HideTalkButton();
-    //    }
-    //}
 
 }
 
