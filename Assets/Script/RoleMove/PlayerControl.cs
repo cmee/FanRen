@@ -56,8 +56,8 @@ public class PlayerControl : MonoBehaviour
             this.moveDir += new Vector3(0f, -1f, 0f);
         }
         CollisionFlags cf = cc.Move(this.moveDir / 8);
-
-        if(colliderWithCCScript != null && cf == CollisionFlags.None && this.moveDir != Vector3.zero)
+        //Debug.Log(this.moveDir);
+        if (colliderWithCCScript != null && cf == CollisionFlags.None && (this.moveDir.x != 0f || this.moveDir.y != 0f))
         {
             colliderWithCCScript.OnPlayerCollisionExit(this.gameObject);
             lastHitGameObject = null;
@@ -115,13 +115,13 @@ public class PlayerControl : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (lastHitGameObject == hit.collider.gameObject) return;
-        colliderWithCCScript = hit.collider.gameObject.GetComponent<IColliderWithCC>();
-        if(colliderWithCCScript != null)
+        IColliderWithCC tmp = hit.collider.gameObject.GetComponent<IColliderWithCC>();
+        if(tmp != null) //是一个需要和CC碰撞的物体
         {
+            if (lastHitGameObject == hit.collider.gameObject) return; //重复碰撞一个物体忽略
+            colliderWithCCScript = tmp;
             colliderWithCCScript.OnPlayerCollisionEnter(this.gameObject);
             lastHitGameObject = hit.collider.gameObject;
-            Debug.Log("OnControllerColliderHit " + hit.collider.gameObject.name);
         }
     }
 
