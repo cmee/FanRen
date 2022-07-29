@@ -2,6 +2,7 @@ using UnityEngine.UI;
 
 public class Enemy : BaseRole
 {
+
     public void Init()
     {
         Shentong[] shentongs = new Shentong[12];
