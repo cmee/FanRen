@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyTriggerToBattleScript : MonoBehaviour, IColliderWithCC
 {
@@ -14,6 +15,12 @@ public class EnemyTriggerToBattleScript : MonoBehaviour, IColliderWithCC
         if (player.tag.Equals("Player"))
         {
             Debug.Log("韩立过来了，开始战斗");
+
+            RootBattleInit.enemyRoleIds = roleId;
+            RootBattleInit.countOfEnemyRole = countOfRoleId;
+            RootBattleInit.enemyRolePrefabPath = rolePrefabPath;
+
+            SceneManager.LoadScene(2);
         }
     }
 

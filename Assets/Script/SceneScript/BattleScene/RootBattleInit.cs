@@ -1,31 +1,56 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RootBattleInit : BaseMono
 {
 
-    public GameObject[] roles = new GameObject[2];
+    public GameObject[] roles;
+
+    public static int[] enemyRoleIds; //从数据库查询角色属性
+
+    public static int[] countOfEnemyRole; //对应数量
+
+    public static string[] enemyRolePrefabPath; //人物预制体路径
+
+    private void OnDestroy()
+    {
+        enemyRoleIds = null;
+        countOfEnemyRole = null;
+        enemyRolePrefabPath = null;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject hanLiGO = GameObject.FindGameObjectWithTag("HanLi");
-        HanLi hanLiCS = hanLiGO.GetComponent<HanLi>();
+        //roles = new GameObject[enemyRoleIds.Length + 1 + (队友?傀儡？灵兽？灵虫？)];
+        roles = new GameObject[enemyRoleIds.Length + 1]; //todo
+
+        GameObject hanLiPrefab = Resources.Load<GameObject>("Prefab/RolePrefab/HanLi");
+        GameObject hanLiGameObj = Instantiate(hanLiPrefab);
+        HanLi hanLiCS = hanLiGameObj.GetComponent<HanLi>();
         hanLiCS.Init();
-        hanLiCS.InitRoleBattelePos(28, 28);
+        hanLiCS.InitRoleBattelePos(5, 5); //todo
+        roles[0] = hanLiGameObj;
 
-        GameObject enemyGO = GameObject.FindGameObjectWithTag("Enemy");
-        Enemy enemyCS = enemyGO.GetComponent<Enemy>();
-        enemyCS.Init();
-        enemyCS.InitRoleBattelePos(16, 16);
-
+        int index = 1;
+        MyDBManager.GetInstance().ConnDB();
+        for(int i=0; i< enemyRoleIds.Length; i++)
+        {
+            MyDBManager.RoleInfo enemyRoleInfo = MyDBManager.GetInstance().GetRoleInfo(enemyRoleIds[i]);
+            List<Shentong> enemyRoleShentongs = MyDBManager.GetInstance().GetRoleActiveShentong(enemyRoleIds[i]);
+            for (int j=0; j< countOfEnemyRole[i]; j++)
+            {
+                GameObject enemyRolePrefab = Resources.Load<GameObject>(enemyRolePrefabPath[i]);
+                GameObject enemyRoleGameObj = Instantiate(enemyRolePrefab);
+                Enemy enemyCS = enemyRoleGameObj.GetComponent<Enemy>();
+                enemyCS.Init(enemyRoleInfo, enemyRoleShentongs.ToArray());
+                enemyCS.InitRoleBattelePos(6 + i, 6 + i); //todo
+                roles[index] = enemyRoleGameObj;
+                index++;
+            }
+        }
         
-        roles[0] = hanLiGO;
-        roles[1] = enemyGO;
-
         GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().Init(roles);
-
         GameObject.FindGameObjectWithTag("Terrain").GetComponent<BattleController>().Init(roles);
     }    
 

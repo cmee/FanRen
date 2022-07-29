@@ -1283,15 +1283,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4872,6 +4872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObjectType: 0
   targetSceneIndex: 3
 --- !u!1001 &3689082339160764587
 PrefabInstance:

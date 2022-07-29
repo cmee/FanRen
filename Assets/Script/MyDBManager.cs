@@ -56,27 +56,50 @@ public class MyDBManager
         return this.mIsConnected;
     }
 
-    //public void GetReadOnlyItemById(int itemId)
-    //{
-    //    SqliteCommand sqliteCommand = this.mSqliteConnection.CreateCommand();
-    //    sqliteCommand.CommandText = $"select * from items where itemId={itemId}";
-    //    SqliteDataReader sdr = sqliteCommand.ExecuteReader();
-    //    while (sdr.Read())
-    //    {
-    //        //Debug.Log("itemName " + sdr["itemName"] + " ,price " + sdr["price"]);
-    //        int j = sdr.FieldCount;
-    //        //Debug.Log("FieldCount " + j);
-    //        while (j > 0)
-    //        {
-    //            Debug.Log("columnName " + sdr.GetName(j-1) + " ,value " + sdr.GetValue(j-1));
-    //            j--;
-    //        }
-    //    }
-    //    sdr.Close();
-    //    sdr.DisposeAsync();
-    //    sqliteCommand.DisposeAsync();
-    //}
+    public RoleInfo GetRoleInfo(int roleId)
+    {
+        RoleInfo roleInfo = new RoleInfo();
+        SqliteCommand sqliteCommand = this.mSqliteConnection.CreateCommand();
+        sqliteCommand.CommandText = $"select * from role_info_r where roleId={roleId}";
+        SqliteDataReader sdr = sqliteCommand.ExecuteReader();
+        if (sdr.Read())
+        {
+            //todo
+        }
+        sdr.Close();
+        sdr.Dispose();
+        sqliteCommand.Dispose();
+        return roleInfo;
+    }
 
+    public List<Shentong> GetRoleActiveShentong(int roleId)
+    {
+        List<Shentong> roleShentong = new List<Shentong>();
+        SqliteCommand sqliteCommand = this.mSqliteConnection.CreateCommand();
+        sqliteCommand.CommandText = $"select * from role_active_shentong_rw where roleId={roleId}";
+        SqliteDataReader sdr = sqliteCommand.ExecuteReader();
+        while (sdr.Read())
+        {
+            //todo
+        }
+        sdr.Close();
+        sdr.Dispose();
+        sqliteCommand.Dispose();
+        return roleShentong;
+    }
+
+    //角色信息
+    public class RoleInfo
+    {
+        public int roleId;
+        public string name;
+        public int currentHp;
+        public int maxHp;
+        public int currentMp;
+        public int maxMp;
+    }
+
+    //角色拥有的物品
     public class RoleItem{
         public int itemId;
         public int itemCount;
@@ -131,6 +154,7 @@ public class MyDBManager
         }
     }
 
+    //角色任务
     public class RoleTask
     {
         public int taskId;

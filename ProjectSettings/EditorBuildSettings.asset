@@ -14,9 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleField.unity
     guid: a4ae17ccfd8171f48923dfb21065a1ab
-  - enabled: 1
-    path: Assets/Scenes/Home.unity
-    guid: 179be337452377048b8b8c92f35971cc
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Home_shan.unity
     guid: e36d2ef01769f6a4596313a88e068a08

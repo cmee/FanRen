@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class HanLi : BaseRole
 {
+
+    //todo 要从数据库查询出装备了哪些神通
     public void Init()
     {
         Shentong[] shentongs = new Shentong[12];
