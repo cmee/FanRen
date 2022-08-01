@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roleId: 07000000
-  countOfRoleId: 02000000
+  countOfRoleId: 01000000
   rolePrefabPath:
   - Prefab/RolePrefab/Wolf_Animated/Prefabs/Wolf
 --- !u!1 &520380222

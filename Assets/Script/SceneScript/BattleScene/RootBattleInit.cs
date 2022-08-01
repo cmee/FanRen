@@ -65,7 +65,7 @@ public class RootBattleInit : BaseMono
                     GameObject enemyRolePrefab = Resources.Load<GameObject>(enemyRolePrefabPath[i]);
                     GameObject enemyRoleGameObj = Instantiate(enemyRolePrefab);
                     Enemy enemyCS = enemyRoleGameObj.AddComponent<Enemy>();
-                    enemyCS.Init(enemyRoleInfo, enemyRoleShentongs.ToArray());
+                    enemyCS.Init(enemyRoleInfo, enemyRoleShentongs);
                     enemyCS.InitRoleBattelePos(6 + i, 6 + i); //todo
                     roleList.Add(enemyRoleGameObj);
                 }

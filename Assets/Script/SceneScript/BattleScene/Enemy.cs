@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Enemy : BaseRole
@@ -16,14 +17,20 @@ public class Enemy : BaseRole
         //slide.value = 100;
     }
 
-    public void Init(MyDBManager.RoleInfo enemyRoleInfo, Shentong[] shentongs)
+    public void Init(MyDBManager.RoleInfo enemyRoleInfo, List<Shentong> shentongs)
     {
         //Shentong[] shentongs = new Shentong[12];
         //shentongs[0] = new Shentong("ÆÕÍ¨¹¥»÷", 2, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa");
 
         //InitRoleData(100, 100, 50, 10, 5, shentongs, 11, 2, TeamNum.TEAM_TWO);
 
-        InitRoleData(enemyRoleInfo.currentHp, enemyRoleInfo.maxHp, enemyRoleInfo.currentMp, enemyRoleInfo.maxMp, enemyRoleInfo.gongJiLi, enemyRoleInfo.fangYuLi, shentongs, enemyRoleInfo.speed, enemyRoleInfo.roleId, TeamNum.TEAM_TWO);
+        Shentong[] tmp = new Shentong[12];
+        for (int i = 0; i < shentongs.Count; i++)
+        {
+            tmp[i] = shentongs[i];
+        }
+
+        InitRoleData(enemyRoleInfo.currentHp, enemyRoleInfo.maxHp, enemyRoleInfo.currentMp, enemyRoleInfo.maxMp, enemyRoleInfo.gongJiLi, enemyRoleInfo.fangYuLi, tmp, enemyRoleInfo.speed, enemyRoleInfo.roleId, TeamNum.TEAM_TWO);
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;
