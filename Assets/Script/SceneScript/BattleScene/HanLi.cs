@@ -7,16 +7,14 @@ public class HanLi : BaseRole
     //todo 要从数据库查询出装备了哪些神通
     public void Init()
     {
-        Shentong[] shentongs = new Shentong[12];
-        shentongs[0] = new Shentong("眨眼剑法", 2, 0, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa");
+        MyDBManager.GetInstance().ConnDB();
+        Shentong[] shentongs = MyDBManager.GetInstance().GetRoleShentong(1, 1).ToArray();
 
-        shentongs[1] = new Shentong("乾蓝冰焰", 8, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa");
-        shentongs[1].ackType = ShentongAckType.Line;
+        MyDBManager.RoleInfo roleInfo = MyDBManager.GetInstance().GetRoleInfo(1);
 
-        shentongs[2] = new Shentong("大庚剑阵", 6, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa", 4);
-        shentongs[2].ackType = ShentongAckType.Plane;
+        //InitRoleData(100, 100, 50, 50, 10, 4, shentongs, 13, 1, TeamNum.TEAM_ONE);
 
-        InitRoleData(100, 100, 50, 10, 4, shentongs, 13, 1, TeamNum.TEAM_ONE);
+        InitRoleData(roleInfo.currentHp, roleInfo.maxHp, roleInfo.currentMp, roleInfo.maxMp, roleInfo.gongJiLi, roleInfo.fangYuLi, shentongs, roleInfo.speed, roleInfo.roleId, TeamNum.TEAM_ONE);
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;

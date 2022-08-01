@@ -58,13 +58,33 @@ public class MyDBManager
 
     public RoleInfo GetRoleInfo(int roleId)
     {
-        RoleInfo roleInfo = new RoleInfo();
+        RoleInfo roleInfo = null;
         SqliteCommand sqliteCommand = this.mSqliteConnection.CreateCommand();
         sqliteCommand.CommandText = $"select * from role_info_r where roleId={roleId}";
         SqliteDataReader sdr = sqliteCommand.ExecuteReader();
         if (sdr.Read())
         {
-            //todo
+            roleInfo = new RoleInfo();
+            //public int roleId;
+            string roleName = (string)sdr["roleName"];
+            int hp = (int)((Int64)sdr["hp"]);
+            int maxHp = (int)((Int64)sdr["maxHp"]);
+            int mp = (int)((Int64)sdr["mp"]);
+            int maxMp = (int)((Int64)sdr["maxMp"]);
+            int speed = (int)((Int64)sdr["speed"]);
+            int gongJiLi = (int)((Int64)sdr["attack"]);
+            int fangYuLi = (int)((Int64)sdr["defense"]);
+
+            roleInfo.roleId = roleId;
+            roleInfo.name = roleName;
+            roleInfo.currentHp = hp;
+            roleInfo.maxHp = maxHp;
+            roleInfo.currentMp = mp;
+            roleInfo.maxMp = maxMp;
+            roleInfo.speed = speed;
+            roleInfo.gongJiLi = gongJiLi;
+            roleInfo.fangYuLi = fangYuLi;
+
         }
         sdr.Close();
         sdr.Dispose();
@@ -72,15 +92,52 @@ public class MyDBManager
         return roleInfo;
     }
 
-    public List<Shentong> GetRoleActiveShentong(int roleId)
+    //activeState 0查询全部 1只查询激活的
+    public List<Shentong> GetRoleShentong(int roleId, int activeState)
     {
         List<Shentong> roleShentong = new List<Shentong>();
         SqliteCommand sqliteCommand = this.mSqliteConnection.CreateCommand();
-        sqliteCommand.CommandText = $"select * from role_active_shentong_rw where roleId={roleId}";
+        sqliteCommand.CommandText = $"select * from role_active_shentong_rw a left join shen_tong_r b on a.shenTongId=b.id where a.roleId={roleId}";
         SqliteDataReader sdr = sqliteCommand.ExecuteReader();
         while (sdr.Read())
         {
-            //todo
+            int isActive = (int)((Int64)sdr["isActive"]);
+            if(activeState == 1) //只查询激活
+            {
+                if (isActive != 1) continue;
+            }
+
+            int shenTongId = (int)((Int64)sdr["shenTongId"]);
+            
+            //int roleId = (int)((Int64)sdr["roleId"]);
+
+            string shenTongName = (string)sdr["name"];
+            int damage = (int)((Int64)sdr["damage"]);
+            int defence = (int)((Int64)sdr["defense"]);
+            string desc = (string)sdr["desc"];
+            int studyRequireLevel = (int)((Int64)sdr["studyRequireLevel"]);
+            int effType = (int)((Int64)sdr["effType"]); //神通类型，攻击、防御、变身 等等
+            int rangeType = (int)((Int64)sdr["rangeType"]); //攻击范围类型，一条、一个面、一个点 等等
+            int planeRadius = (int)((Int64)sdr["planeRadius"]); //面类型的攻击范围“半径”
+            string effPath = (string)sdr["effPath"];
+            string soundEffPath = (string)sdr["soundEffPath"];
+
+            Shentong shenTong = new Shentong();
+            shenTong.shenTongId = shenTongId;
+            shenTong.isActive = isActive;
+            shenTong.roleId = roleId;
+            shenTong.shenTongName = shenTongName;
+            shenTong.damage = damage;
+            shenTong.defence = defence;
+            shenTong.desc = desc;
+            shenTong.studyRequireLevel = studyRequireLevel;
+            shenTong.effType = (ShentongEffType)effType;
+            shenTong.rangeType = (ShentongRangeType)rangeType;
+            shenTong.planeRadius = planeRadius;
+            shenTong.effPath = effPath;
+            shenTong.soundEffPath = soundEffPath;
+
+            roleShentong.Add(shenTong);
         }
         sdr.Close();
         sdr.Dispose();
@@ -97,6 +154,9 @@ public class MyDBManager
         public int maxHp;
         public int currentMp;
         public int maxMp;
+        public int speed;
+        public int gongJiLi;
+        public int fangYuLi;
     }
 
     //角色拥有的物品

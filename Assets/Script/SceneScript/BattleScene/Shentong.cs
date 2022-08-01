@@ -8,14 +8,30 @@ public class Shentong
     public int needMp;
     public int damage;
 
-    public string effPath;
-    public string soundEffPath;
+    public string effPath; //特效文件路径
+    public string soundEffPath; //音效文件路径
 
     //plane类型攻击神通的“半径”
     public int planeRadius;
 
-    public ShentongType type = ShentongType.Gong_Ji;
-    public ShentongAckType ackType = ShentongAckType.Point;
+    //public ShentongEffType type = ShentongEffType.Gong_Ji;
+    //public ShentongRangeType ackType = ShentongRangeType.Point;
+
+
+    public int shenTongId;
+    public int isActive;
+    public int roleId;
+    //string shenTongName = (string)sdr["name"];
+    //int damage = (int)((Int64)sdr["damage"]);
+    public int defence;
+    public string desc;
+    public int studyRequireLevel;
+    public ShentongEffType effType; //神通类型，攻击、防御、变身 等等
+    public ShentongRangeType rangeType; //攻击范围类型，一条、一个面、一个点 等等
+
+    public Shentong()
+    {
+    }
 
     public Shentong(string shenTongName, int unitDistance, int needMp, int damage, string effPath, string soundEffPath)
     {
@@ -40,16 +56,29 @@ public class Shentong
 
 }
 
-public enum ShentongType
+public enum ShentongEffType
 {
+    None = 0,
     Gong_Ji = 1,
-    Fang_Yu = 2
+    Fang_Yu = 2,
+    Bian_Shen = 3 //变身、秘法 等
 }
 
-public enum ShentongAckType
+public enum ShentongRangeType
 {
+    None = 0,
     Line = 1,
     //Ten = 2,
     Point = 3,
     Plane = 4
+}
+
+public enum ShenTongStudyLevel
+{
+    FanRen = 1,
+    LianQi = 2,
+    ZhuJi = 3,
+    JieDan = 4,
+    YuanYing = 5,
+    HuaShen = 6
 }

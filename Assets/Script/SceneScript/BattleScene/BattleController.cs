@@ -129,7 +129,7 @@ public class BattleController : BaseMono
         if (activingRoleGO != null)
         {
             BaseRole roleCS = activingRoleGO.GetComponent<BaseRole>();
-            if(roleCS.selectedShentong != null && roleCS.selectedShentong.type == ShentongType.Gong_Ji)
+            if(roleCS.selectedShentong != null && roleCS.selectedShentong.effType == ShentongEffType.Gong_Ji)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
@@ -144,7 +144,7 @@ public class BattleController : BaseMono
                         if ("canAck".Equals(clickGridGameObj.tag))
                         {
 
-                            if (roleCS.selectedShentong.ackType == ShentongAckType.Point)
+                            if (roleCS.selectedShentong.rangeType == ShentongRangeType.Point)
                             {
                                 if (lastChangeColorGOForPoint != null)
                                 {
@@ -154,7 +154,7 @@ public class BattleController : BaseMono
                                 clickGridGameObj.GetComponent<Renderer>().material = ackGridMouseMoveMat;
                                 lastChangeColorGOForPoint = clickGridGameObj;
                             }
-                            else if (roleCS.selectedShentong.ackType == ShentongAckType.Line)
+                            else if (roleCS.selectedShentong.rangeType == ShentongRangeType.Line)
                             {                                
                                 if(!lastNeedChangeColorGameObjects.Contains(clickGridGameObj))
                                 {
@@ -234,7 +234,7 @@ public class BattleController : BaseMono
                                     
                                 }
                             }
-                            else if (roleCS.selectedShentong.ackType == ShentongAckType.Plane)
+                            else if (roleCS.selectedShentong.rangeType == ShentongRangeType.Plane)
                             {
                                 if(lastChangeColorGOsForPlane.Count > 0)
                                 {
@@ -292,12 +292,12 @@ public class BattleController : BaseMono
                         }
                         else
                         {
-                            if (roleCS.selectedShentong.ackType == ShentongAckType.Point && lastChangeColorGOForPoint != null)
+                            if (roleCS.selectedShentong.rangeType == ShentongRangeType.Point && lastChangeColorGOForPoint != null)
                             {
                                 Debug.Log("clear lastChangeColorGOForPoint");
                                 lastChangeColorGOForPoint.GetComponent<Renderer>().material = ackGridMat;
                             }
-                            else if (roleCS.selectedShentong.ackType == ShentongAckType.Line && lastNeedChangeColorGameObjects.Count > 0)
+                            else if (roleCS.selectedShentong.rangeType == ShentongRangeType.Line && lastNeedChangeColorGameObjects.Count > 0)
                             {
 
                                 foreach (GameObject tmp in lastNeedChangeColorGameObjects)
@@ -308,7 +308,7 @@ public class BattleController : BaseMono
                                 Debug.Log("clear lastNeedChangeColorGameObjects");
                                 lastNeedChangeColorGameObjects.Clear();
                             }
-                            else if (roleCS.selectedShentong.ackType == ShentongAckType.Plane && lastChangeColorGOsForPlane.Count > 0)
+                            else if (roleCS.selectedShentong.rangeType == ShentongRangeType.Plane && lastChangeColorGOsForPlane.Count > 0)
                             {
                                 foreach (GameObject tmp in lastChangeColorGOsForPlane)
                                 {
@@ -441,7 +441,7 @@ public class BattleController : BaseMono
                     isPlayingAnim = true;
                     Debug.Log("开始播放人物攻击动画和神通动画");
                     Shentong shentong = activingRoleGO.GetComponent<BaseRole>().selectedShentong;
-                    if (shentong.ackType == ShentongAckType.Point)
+                    if (shentong.rangeType == ShentongRangeType.Point)
                     {
                         MyAudioManager.GetInstance().PlaySE(shentong.soundEffPath);
 
@@ -455,7 +455,7 @@ public class BattleController : BaseMono
                         GameObject stEffGO = Instantiate(shentongEffPrefab);
                         stEffGO.transform.position = new Vector3(clickGameObj.transform.position.x, 1, clickGameObj.transform.position.z);
                     }
-                    else if (shentong.ackType == ShentongAckType.Line)
+                    else if (shentong.rangeType == ShentongRangeType.Line)
                     {
 
                         MyAudioManager.GetInstance().PlaySE(shentong.soundEffPath);
@@ -478,7 +478,7 @@ public class BattleController : BaseMono
                             stEffGO.transform.position = new Vector3(tmp.transform.position.x, 1, tmp.transform.position.z);
                         }
                     }
-                    else if (shentong.ackType == ShentongAckType.Plane)
+                    else if (shentong.rangeType == ShentongRangeType.Plane)
                     {
 
                         MyAudioManager.GetInstance().PlaySE(shentong.soundEffPath);
@@ -538,7 +538,7 @@ public class BattleController : BaseMono
         BaseRole activingRoleCS = activingRoleGO.GetComponent<BaseRole>();
         Shentong selectedShentong = activingRoleCS.selectedShentong;
         int enemyCount = 0;
-        if (selectedShentong.ackType == ShentongAckType.Point)
+        if (selectedShentong.rangeType == ShentongRangeType.Point)
         {
             string[] xz = lastChangeColorGOForPoint.name.Split(',');
             foreach (GameObject roleGO in allRole)
@@ -559,7 +559,7 @@ public class BattleController : BaseMono
                 }
             }
         }
-        else if (selectedShentong.ackType == ShentongAckType.Line)
+        else if (selectedShentong.rangeType == ShentongRangeType.Line)
         {
             Dictionary<string, GameObject> pos_gridGO = new Dictionary<string, GameObject>();
             foreach (GameObject ackRangeGrid in lastNeedChangeColorGameObjects)
@@ -584,7 +584,7 @@ public class BattleController : BaseMono
                 }
             }
         }
-        else if (selectedShentong.ackType == ShentongAckType.Plane)
+        else if (selectedShentong.rangeType == ShentongRangeType.Plane)
         {
             Dictionary<string, GameObject> pos_gridGO = new Dictionary<string, GameObject>();
             foreach (GameObject ackRangeGrid in lastChangeColorGOsForPlane)
@@ -686,13 +686,13 @@ public class BattleController : BaseMono
 
                 
                 if(selectedRoleCS.selectedShentong != null 
-                    && selectedRoleCS.selectedShentong.type == ShentongType.Gong_Ji)
+                    && selectedRoleCS.selectedShentong.effType == ShentongEffType.Gong_Ji)
                 {
 
                     disToX = Math.Abs(x - selectedRoleCS.battleToPosX);
                     disToY = Math.Abs(z - selectedRoleCS.battleToPosZ);
 
-                    if (selectedRoleCS.selectedShentong.ackType == ShentongAckType.Line)
+                    if (selectedRoleCS.selectedShentong.rangeType == ShentongRangeType.Line)
                     {
                         if (selectedRoleCS.battleToPosX == x || selectedRoleCS.battleToPosZ == z)
                         {
@@ -708,7 +708,7 @@ public class BattleController : BaseMono
                             }                            
                         }
                     }
-                    else if (selectedRoleCS.selectedShentong.ackType == ShentongAckType.Point || selectedRoleCS.selectedShentong.ackType == ShentongAckType.Plane)
+                    else if (selectedRoleCS.selectedShentong.rangeType == ShentongRangeType.Point || selectedRoleCS.selectedShentong.rangeType == ShentongRangeType.Plane)
                     {
                         
                         if ((disToX + disToY) <= selectedRoleCS.selectedShentong.unitDistance && (disToX + disToY) != 0)
