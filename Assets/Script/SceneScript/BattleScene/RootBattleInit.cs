@@ -4,7 +4,7 @@ using UnityEngine;
 public class RootBattleInit : BaseMono
 {
 
-    public GameObject[] roles;
+    public List<GameObject> roles;
 
     public static int[] enemyRoleIds; //从数据库查询角色属性
 
@@ -37,7 +37,7 @@ public class RootBattleInit : BaseMono
             hanLiCS.InitRoleBattelePos(15, 15); //todo
             
             Enemy enemyCS = roles[1].GetComponent<Enemy>();
-            enemyCS.Init();
+            enemyCS.Init(7, 1);
             enemyCS.InitRoleBattelePos(25, 25);
 
             GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().Init(roles);
@@ -63,13 +63,13 @@ public class RootBattleInit : BaseMono
                     GameObject enemyRolePrefab = Resources.Load<GameObject>(enemyRolePrefabPath[i]);
                     GameObject enemyRoleGameObj = Instantiate(enemyRolePrefab);
                     Enemy enemyCS = enemyRoleGameObj.AddComponent<Enemy>();
-                    enemyCS.Init(7);
+                    enemyCS.Init(7, j+1);
                     enemyCS.InitRoleBattelePos(7 + j*2, 7 + j*2); //todo
                     roleList.Add(enemyRoleGameObj);
                 }
             }
 
-            roles = roleList.ToArray();
+            roles = roleList;
             GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().Init(roles);
             GameObject.FindGameObjectWithTag("Terrain").GetComponent<BattleController>().Init(roles);
         }

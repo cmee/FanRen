@@ -12,10 +12,14 @@ public class BattleUIControl : BaseMono
     private GameObject resetButton;
     private GameObject[] buttons = new GameObject[12];
 
-    private List<SlideAvatarController> allSlideAvatarCS = new List<SlideAvatarController>();
+    private List<GameObject> allRole;
 
-    public void Init(GameObject[] allRole)
+    //private List<SlideAvatarController> allSlideAvatarCS = new List<SlideAvatarController>();
+
+    public void Init(List<GameObject> allRole)
     {
+
+        this.allRole = allRole;
         passButton = GameObject.FindGameObjectWithTag("PassButton");
         resetButton = GameObject.FindGameObjectWithTag("ResetButton");
         passButton.SetActive(false);
@@ -39,11 +43,10 @@ public class BattleUIControl : BaseMono
         {
             //头像移动代码
             BaseRole roleCS = roleGO.GetComponent<BaseRole>();
-            GameObject sliderAvatarGO = Instantiate(sliderAvatarPrefab);
-            SlideAvatarController sac = sliderAvatarGO.GetComponent<SlideAvatarController>();
-            sliderAvatarGO.transform.SetParent(avatarParent.transform);
+            GameObject sliderAvatarGO = Instantiate(sliderAvatarPrefab, avatarParent.transform);
+            SlideAvatarController slideAvatarController = sliderAvatarGO.GetComponent<SlideAvatarController>();
             //todo 头像滑动速度公式待定
-            sac.speed = roleCS.speed / 10f;
+            slideAvatarController.speed = roleCS.speed / 10f;
             if (roleCS.teamNum == TeamNum.TEAM_ONE)
             {
                 sliderAvatarGO.GetComponent<Image>().color = Color.blue;
@@ -54,15 +57,15 @@ public class BattleUIControl : BaseMono
                 sliderAvatarGO.GetComponent<Image>().color = Color.red;
                 sliderAvatarGO.transform.position = new Vector2(avatarParent.transform.position.x - parentWidth / 2, avatarParent.transform.position.y + parentHeight / 2);
             }
-            sac.roleGO = roleGO;
-            allSlideAvatarCS.Add(sac);
+            slideAvatarController.roleGO = roleGO;
+            //allSlideAvatarCS.Add(slideAvatarController);
 
 
             //初始化血条代码
             GameObject hpSliderPrefab = Resources.Load<GameObject>("Prefab/HP_Slider");
 
             GameObject hpSlideGameObject = Instantiate(hpSliderPrefab, this.transform);
-            hpSlideGameObject.name = roleCS.GetHpUIGameObjectName();
+            //hpSlideGameObject.name = roleCS.GetHpUIGameObjectName();
 
             Text roleName = hpSlideGameObject.GetComponentsInChildren<Text>()[0];
             roleName.text = roleCS.roleName;
@@ -85,20 +88,32 @@ public class BattleUIControl : BaseMono
 
     }     
 
-    public void OnRoleSelected(BaseRole selectedRoleCS)
+    //public void OnRoleSelected(BaseRole selectedRoleCS)
+    //{
+    //    this.selectedRoleCS = selectedRoleCS;
+    //    ShowAndHideShentongButton();
+    //    passButton.SetActive(true);
+    //    resetButton.SetActive(true);
+    //}
+
+    public void OnChangeRoleAction(GameObject activingRoleGO)
     {
-        this.selectedRoleCS = selectedRoleCS;
+        foreach (GameObject roleGO in this.allRole)
+        {
+            if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
+            BaseRole baseRole = roleGO.GetComponent<BaseRole>();
+            SlideAvatarController sac = baseRole.sliderAvatarGO.GetComponent<SlideAvatarController>();
+            sac.PauseRun();
+        }
+        //foreach (SlideAvatarController sac in allSlideAvatarCS)
+        //{
+        //    if (sac.gameObject.activeInHierarchy && sac.gameObject.activeSelf) sac.PauseRun();
+        //}
+
+        this.selectedRoleCS = activingRoleGO.GetComponent<BaseRole>();
         ShowAndHideShentongButton();
         passButton.SetActive(true);
         resetButton.SetActive(true);
-    }
-
-    public void OnChangeRoleAction(GameObject roleGO)
-    {
-        foreach (SlideAvatarController sac in allSlideAvatarCS)
-        {
-            sac.PauseRun();
-        }
     }
 
     public void OnClickPassButton()
@@ -106,8 +121,15 @@ public class BattleUIControl : BaseMono
         HideAllShentongButton();
         passButton.SetActive(false);
         resetButton.SetActive(false);
-        foreach (SlideAvatarController sac in allSlideAvatarCS)
+        //foreach (SlideAvatarController sac in allSlideAvatarCS)
+        //{
+        //    if (sac.gameObject.activeInHierarchy && sac.gameObject.activeSelf) sac.RePlayRun();
+        //}
+        foreach (GameObject roleGO in this.allRole)
         {
+            if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
+            BaseRole baseRole = roleGO.GetComponent<BaseRole>();
+            SlideAvatarController sac = baseRole.sliderAvatarGO.GetComponent<SlideAvatarController>();
             sac.RePlayRun();
         }
     }
@@ -146,6 +168,22 @@ public class BattleUIControl : BaseMono
                 shentongButtonGO.SetActive(false);
             }
         }
+    }
+
+    void Start()
+    {
+        damageTextPrefab = Resources.Load<GameObject>("Prefab/TextDamage");
+    }
+
+    //GameObject uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
+    GameObject damageTextPrefab;
+
+    public void ShowDamageTextUI(int damageText, GameObject targetGO)
+    {
+        GameObject damageTextGO = Instantiate(this.damageTextPrefab, this.transform);
+        damageTextGO.GetComponent<Text>().text = "-" + damageText;
+        Vector2 tp2 = RectTransformUtility.WorldToScreenPoint(Camera.main, targetGO.transform.position);
+        damageTextGO.GetComponent<RectTransform>().position = tp2;
     }
 
     private void changeButtonColor(int clickButtonIndex)

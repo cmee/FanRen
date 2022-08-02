@@ -34,8 +34,8 @@ public class BaseRole : BaseMono
 
     public RoleInBattleStatus roleInBattleStatus = RoleInBattleStatus.Waiting;
 
-    GameObject uiParent;
-    GameObject damageTextPrefab;
+    //GameObject uiParent;
+    //GameObject damageTextPrefab;
 
     public GameObject hpGO = null;
     public GameObject sliderAvatarGO = null;
@@ -55,7 +55,7 @@ public class BaseRole : BaseMono
         this.gameObject.transform.position = new Vector3(startX + 0.5f, 0, startZ + 0.5f);
     }
 
-    public void InitRoleData(int hp, int maxHp, int mp, int maxMp, int gongJiLi, int fangYuLi, Shentong[] shentongInBattle, int speed, int roleId, TeamNum teamNum, string roleName)
+    public void InitRoleData(int hp, int maxHp, int mp, int maxMp, int gongJiLi, int fangYuLi, Shentong[] shentongInBattle, int speed, int roleId, TeamNum teamNum, string roleName, string gameObjName)
     {
         this.hp = hp;
         this.maxHp = maxHp;
@@ -68,14 +68,23 @@ public class BaseRole : BaseMono
         this.roleId = roleId;
         this.teamNum = teamNum;
         this.roleName = roleName;
+        this.name = gameObjName;
 
         gameObjectType = GameObjectType.Role;
 
-        uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
-        damageTextPrefab = Resources.Load<GameObject>("Prefab/TextDamage");
+        //uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
+        //damageTextPrefab = Resources.Load<GameObject>("Prefab/TextDamage");
     }
 
-    
+    public void UpdateHP(int damage)
+    {
+        this.hp -= damage;
+        Debug.LogError(this.name + "更新血条 enemy.maxHp " + this.maxHp + ", enemy.hp " + this.hp);
+        Slider enemySlide = this.hpGO.GetComponent<Slider>();
+        enemySlide.maxValue = this.maxHp;
+        enemySlide.minValue = 0;
+        enemySlide.value = this.hp;
+    }
 
     public int GetMoveDistanceInBattle()
     {
@@ -105,15 +114,15 @@ public class BaseRole : BaseMono
         this.selectedShentong = null;
     }
 
-    public string GetHpUIGameObjectName()
-    {
-        return "hp_" + this.name;
-    }
+    //public string GetHpUIGameObjectName()
+    //{
+    //    return "hp_" + this.name;
+    //}
 
-    public Slider GetHpSlide()
-    {
-        return GameObject.Find(GetHpUIGameObjectName()).GetComponent<Slider>();
-    }
+    //public Slider GetHpSlide()
+    //{
+    //    return GameObject.Find(GetHpUIGameObjectName()).GetComponent<Slider>();
+    //}
 
     //返回是否死了
     public bool DoAck(BaseRole enemy)
@@ -122,24 +131,29 @@ public class BaseRole : BaseMono
         //公式待定
         int damage = this.gongJiLi + this.selectedShentong.damage - enemy.fangYuLi;
 
-        //GameObject uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
-        //GameObject damageTextPrefab = Resources.Load<GameObject>("Prefab/TextDamage");
-        GameObject damageTextGO = Instantiate(this.damageTextPrefab, this.uiParent.transform);
-        damageTextGO.GetComponent<Text>().text = "-" + damage;
-        Vector2 tp2 = RectTransformUtility.WorldToScreenPoint(Camera.main, enemy.gameObject.transform.position);
-        damageTextGO.GetComponent<RectTransform>().position = tp2;
+        if (damage <= 0) damage = 1;
+
+        //GameObject damageTextGO = Instantiate(this.damageTextPrefab, this.uiParent.transform);
+        //damageTextGO.GetComponent<Text>().text = "-" + damage;
+        //Vector2 tp2 = RectTransformUtility.WorldToScreenPoint(Camera.main, enemy.transform.position);
+        //damageTextGO.GetComponent<RectTransform>().position = tp2;
+
+        GameObject uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
+        uiParent.GetComponent<BattleUIControl>().ShowDamageTextUI(damage, enemy.gameObject);
 
         if (enemy.hp > damage)
         {
-            Debug.LogError("enemy 扣血:" + damage);
-            enemy.hp -= damage;
+            
+            //enemy.hp -= damage;
             this.mp -= this.selectedShentong.needMp;
 
-            Debug.LogError("更新血条 enemy.maxHp " + enemy.maxHp + ", enemy.hp " + enemy.hp);
-            Slider enemySlide = enemy.GetHpSlide();
-            enemySlide.maxValue = enemy.maxHp;
-            enemySlide.minValue = 0;
-            enemySlide.value = enemy.hp;
+            //Debug.LogError(enemy.name + "更新血条 enemy.maxHp " + enemy.maxHp + ", enemy.hp " + enemy.hp);
+            //Slider enemySlide = enemy.hpGO.GetComponent<Slider>();
+            //enemySlide.maxValue = enemy.maxHp;
+            //enemySlide.minValue = 0;
+            //enemySlide.value = enemy.hp;
+
+            enemy.UpdateHP(damage);
 
             return false;
         }

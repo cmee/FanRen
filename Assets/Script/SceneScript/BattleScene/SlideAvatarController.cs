@@ -16,7 +16,7 @@ public class SlideAvatarController : BaseMono
     public GameObject roleGO;
     public float speed = 0f; //¶ÝËÙ
 
-    private bool runningFlag = false;
+    private bool stopRunFlag = false;
     private bool reachedFlag = false;
 
     void Start()
@@ -30,12 +30,12 @@ public class SlideAvatarController : BaseMono
 
     public void PauseRun()
     {
-        this.runningFlag = true;
+        this.stopRunFlag = true;
     }
 
     public void RePlayRun()
     {
-        this.runningFlag = false;
+        this.stopRunFlag = false;
         if (reachedFlag)
         {            
             transform.position = originPos;
@@ -43,19 +43,24 @@ public class SlideAvatarController : BaseMono
         }
     }
 
+    public static object myLock = new object();
+
     void Update()
     {
-        if (runningFlag) return;
+        if (stopRunFlag) return;
         if (transform.position.x <= (sliderForActionGO.transform.position.x + w / 2))
         {            
             transform.Translate(Vector2.right * Time.deltaTime * 500 * speed, Space.Self);
         }
         else
         {
-            reachedFlag = true;
-            runningFlag = true;
-            battleController.OnChangeRoleAction(roleGO);
-            battleUIControlCS.OnChangeRoleAction(roleGO);
+            lock (myLock)
+            {
+                reachedFlag = true;
+                stopRunFlag = true;
+                battleController.OnChangeRoleAction(roleGO);
+                battleUIControlCS.OnChangeRoleAction(roleGO);
+            }
         }
     }
 

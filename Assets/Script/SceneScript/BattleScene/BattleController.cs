@@ -21,7 +21,7 @@ public class BattleController : BaseMono
 
     //private GameObject sliderAvatarPrefab;
 
-    private GameObject[] allRole;
+    private List<GameObject> allRole;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class BattleController : BaseMono
         //MyAudioManager.GetInstance().PlayBGM("BGM/BattleBGM01");
     }
 
-    public void Init(GameObject[] allRole)
+    public void Init(List<GameObject> allRole)
     {
         this.allRole = allRole;
         Terrain terrain = GetComponent<Terrain>();
@@ -346,9 +346,10 @@ public class BattleController : BaseMono
 
     private bool HasRoleOnTheGrid(GameObject clickGrid)
     {
-        GameObject[] allRoles = GameObject.FindGameObjectWithTag("RootBattleInit").GetComponent<RootBattleInit>().roles;
-        foreach (GameObject roleGO in allRoles)
+        //GameObject[] allRoles = GameObject.FindGameObjectWithTag("RootBattleInit").GetComponent<RootBattleInit>().roles;
+        foreach (GameObject roleGO in this.allRole)
         {
+            if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
             BaseRole roleCS = roleGO.GetComponent<BaseRole>();
             string[] pos = clickGrid.name.Split(',');
             if (roleCS.battleOriginPosX == int.Parse(pos[0])
@@ -427,12 +428,16 @@ public class BattleController : BaseMono
 
                     
                 }
-                else if (clickGameObj.GetComponent<BaseMono>().gameObjectType == GameObjectType.Role)
+                else if (clickGameObj.GetComponent<BaseMono>().gameObjectType == GameObjectType.Role) //点击在了角色身上
                 {
-                    if(activingRoleGO != null && activingRoleGO.GetComponent<BaseRole>().roleInBattleStatus == RoleInBattleStatus.Activing)
+                    Debug.LogError("???????????????????点击在了角色身上??????? 这行log永远都不会打印，打印了必然有逻辑错误 " + clickGameObj.name);
+
+                    //看不懂这里的逻辑
+                    if(activingRoleGO != null && activingRoleGO.GetComponent<BaseRole>().roleInBattleStatus == RoleInBattleStatus.Activing) //全部头像都在移动的时候 activingRoleGO is null
                     {
                         return;
                     }
+                    //看不懂这里的逻辑
                     DoSelectRole(clickGameObj);
                 }
                 else if (clickGameObj.tag.Equals("canAck") && activingRoleGO != null && activingRoleGO.GetComponent<BaseRole>().selectedShentong != null)
@@ -542,7 +547,7 @@ public class BattleController : BaseMono
         if (selectedShentong.rangeType == ShentongRangeType.Point)
         {
             string[] xz = lastChangeColorGOForPoint.name.Split(',');
-            foreach (GameObject roleGO in allRole)
+            foreach (GameObject roleGO in this.allRole)
             {
                 if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
                 BaseRole roleCS = roleGO.GetComponent<BaseRole>();
@@ -554,6 +559,7 @@ public class BattleController : BaseMono
                     {
                         if (activingRoleCS.DoAck(roleCS))
                         {
+                            //this.allRole.Remove(roleGO);
                             enemyCount--;
                         }
                     }
@@ -568,7 +574,7 @@ public class BattleController : BaseMono
                 pos_gridGO[ackRangeGrid.name] = ackRangeGrid;
             }
             GameObject valueOut = null;
-            foreach (GameObject roleGO in allRole)
+            foreach (GameObject roleGO in this.allRole)
             {
                 if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
                 BaseRole roleCS = roleGO.GetComponent<BaseRole>();
@@ -593,7 +599,7 @@ public class BattleController : BaseMono
                 pos_gridGO[ackRangeGrid.name] = ackRangeGrid;
             }
             GameObject valueOut = null;
-            foreach (GameObject roleGO in allRole)
+            foreach (GameObject roleGO in this.allRole)
             {
                 if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
                 BaseRole roleCS = roleGO.GetComponent<BaseRole>();
@@ -613,16 +619,16 @@ public class BattleController : BaseMono
         return enemyCount;
     }
 
-    private void DoSelectRole(GameObject clickGameObj)
+    private void DoSelectRole(GameObject activingGameObj)
     {
-        activingRoleGO = clickGameObj;
+        this.activingRoleGO = activingGameObj;
 
         //Debug.Log("click object name is " + clickGameObj.name);
 
-        BaseRole selectRoleCS = activingRoleGO.GetComponent<BaseRole>();
+        BaseRole selectRoleCS = this.activingRoleGO.GetComponent<BaseRole>();
         selectRoleCS.roleInBattleStatus = RoleInBattleStatus.Activing;
 
-        GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnRoleSelected(selectRoleCS);
+        //GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnRoleSelected(selectRoleCS);
         //passButton?.SetActive(true);
         //resetButton?.SetActive(true);
 

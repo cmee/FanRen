@@ -76,7 +76,7 @@ public class MyDBManager
             int fangYuLi = (int)((Int64)sdr["defense"]);
 
             roleInfo.roleId = roleId;
-            roleInfo.name = roleName;
+            roleInfo.roleName = roleName;
             roleInfo.currentHp = hp;
             roleInfo.maxHp = maxHp;
             roleInfo.currentMp = mp;
@@ -154,7 +154,7 @@ public class MyDBManager
     public class RoleInfo
     {
         public int roleId;
-        public string name;
+        public string roleName;
         public int currentHp;
         public int maxHp;
         public int currentMp;
