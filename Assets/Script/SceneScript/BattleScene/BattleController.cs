@@ -525,6 +525,7 @@ public class BattleController : BaseMono
         if (enemyCount == 0)
         {
             //敌人死光了，显示对应画面
+            Debug.LogError("敌人死光了，显示对应画面");
         }
         else
         {
@@ -571,7 +572,7 @@ public class BattleController : BaseMono
             {
                 if (roleGO == null || !roleGO.activeInHierarchy || !roleGO.activeSelf) continue;
                 BaseRole roleCS = roleGO.GetComponent<BaseRole>();
-                if (roleCS.teamNum != activingRoleCS.teamNum)
+                if (roleCS.teamNum != activingRoleCS.teamNum) //敌人
                 {
                     enemyCount++;
                     if (pos_gridGO.TryGetValue(roleCS.battleOriginPosX + "," + roleCS.battleOriginPosZ, out valueOut)) //点击的grid上有人

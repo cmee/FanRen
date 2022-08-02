@@ -64,6 +64,9 @@ public class BattleUIControl : BaseMono
             GameObject hpSlideGameObject = Instantiate(hpSliderPrefab, this.transform);
             hpSlideGameObject.name = roleCS.GetHpUIGameObjectName();
 
+            Text roleName = hpSlideGameObject.GetComponentsInChildren<Text>()[0];
+            roleName.text = roleCS.roleName;
+
             HPRotation hpRotation = hpSlideGameObject.GetComponent<HPRotation>();
             hpRotation.target = roleGO;
 

@@ -9,7 +9,7 @@ public class Enemy : BaseRole
         Shentong[] shentongs = new Shentong[12];
         shentongs[0] = new Shentong("ÆÕÍ¨¹¥»÷", 2, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa");
 
-        InitRoleData(100, 100, 50, 50, 10, 5, shentongs, 11, 2, TeamNum.TEAM_TWO);
+        InitRoleData(100, 100, 50, 50, 10, 5, shentongs, 11, 2, TeamNum.TEAM_TWO, "²âÊÔÓ×È®");
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;
@@ -17,20 +17,23 @@ public class Enemy : BaseRole
         //slide.value = 100;
     }
 
-    public void Init(MyDBManager.RoleInfo enemyRoleInfo, List<Shentong> shentongs)
+    public void Init(int roleId)
     {
         //Shentong[] shentongs = new Shentong[12];
         //shentongs[0] = new Shentong("ÆÕÍ¨¹¥»÷", 2, 5, 10, "Ef/ZhaYanJianFa", "SoundEff/ZhaYanJianFa");
 
         //InitRoleData(100, 100, 50, 10, 5, shentongs, 11, 2, TeamNum.TEAM_TWO);
 
+        MyDBManager.RoleInfo enemyRoleInfo = MyDBManager.GetInstance().GetRoleInfo(roleId);
+        List<Shentong> enemyRoleShentongs = MyDBManager.GetInstance().GetRoleShentong(roleId, 1);
+
         Shentong[] tmp = new Shentong[12];
-        for (int i = 0; i < shentongs.Count; i++)
+        for (int i = 0; i < enemyRoleShentongs.Count; i++)
         {
-            tmp[i] = shentongs[i];
+            tmp[i] = enemyRoleShentongs[i];
         }
 
-        InitRoleData(enemyRoleInfo.currentHp, enemyRoleInfo.maxHp, enemyRoleInfo.currentMp, enemyRoleInfo.maxMp, enemyRoleInfo.gongJiLi, enemyRoleInfo.fangYuLi, tmp, enemyRoleInfo.speed, enemyRoleInfo.roleId, TeamNum.TEAM_TWO);
+        InitRoleData(enemyRoleInfo.currentHp, enemyRoleInfo.maxHp, enemyRoleInfo.currentMp, enemyRoleInfo.maxMp, enemyRoleInfo.gongJiLi, enemyRoleInfo.fangYuLi, tmp, enemyRoleInfo.speed, enemyRoleInfo.roleId, TeamNum.TEAM_TWO, enemyRoleInfo.name);
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;

@@ -1279,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2607985428635935452, guid: e9ec17bf93d13c6489db282750f274de, type: 3}
       propertyPath: m_LocalScale.x
@@ -1469,7 +1469,7 @@ Transform:
   - {fileID: 1346379697}
   - {fileID: 1085126832}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 12.081, z: 0}
 --- !u!65 &496833892
 BoxCollider:
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roleId: 07000000
-  countOfRoleId: 01000000
+  countOfRoleId: 02000000
   rolePrefabPath:
   - Prefab/RolePrefab/Wolf_Animated/Prefabs/Wolf
 --- !u!1 &520380222
@@ -2663,7 +2663,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30.45, y: -192.679, z: 0}
 --- !u!114 &1087763047
 MonoBehaviour:

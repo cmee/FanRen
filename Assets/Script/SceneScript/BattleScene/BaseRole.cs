@@ -24,6 +24,7 @@ public class BaseRole : BaseMono
     public int gongJiLi;
     public int fangYuLi;
     public int speed;
+    public string roleName;
     
     public Shentong[] shentongInBattle;
 
@@ -54,7 +55,7 @@ public class BaseRole : BaseMono
         this.gameObject.transform.position = new Vector3(startX + 0.5f, 0, startZ + 0.5f);
     }
 
-    public void InitRoleData(int hp, int maxHp, int mp, int maxMp, int gongJiLi, int fangYuLi, Shentong[] shentongInBattle, int speed, int roleId, TeamNum teamNum)
+    public void InitRoleData(int hp, int maxHp, int mp, int maxMp, int gongJiLi, int fangYuLi, Shentong[] shentongInBattle, int speed, int roleId, TeamNum teamNum, string roleName)
     {
         this.hp = hp;
         this.maxHp = maxHp;
@@ -66,6 +67,8 @@ public class BaseRole : BaseMono
         this.speed = speed;
         this.roleId = roleId;
         this.teamNum = teamNum;
+        this.roleName = roleName;
+
         gameObjectType = GameObjectType.Role;
 
         uiParent = GameObject.FindGameObjectWithTag("UI_Canvas");
@@ -83,7 +86,7 @@ public class BaseRole : BaseMono
     public void OnSelectShentong(int index)
     {
         
-        if (this.shentongInBattle[index].needMp < this.mp)
+        if (this.shentongInBattle[index].needMp <= this.mp)
         {
             this.selectedShentong = this.shentongInBattle[index];
             
@@ -92,7 +95,8 @@ public class BaseRole : BaseMono
         }
         else
         {
-            //UI提示灵力不足
+            //todo UI提示灵力不足
+            Debug.LogError("灵力不足");
         }
     }
 
@@ -127,12 +131,13 @@ public class BaseRole : BaseMono
 
         if (enemy.hp > damage)
         {
-            Debug.Log("enemy 扣血:" + damage);
+            Debug.LogError("enemy 扣血:" + damage);
             enemy.hp -= damage;
             this.mp -= this.selectedShentong.needMp;
 
+            Debug.LogError("更新血条 enemy.maxHp " + enemy.maxHp + ", enemy.hp " + enemy.hp);
             Slider enemySlide = enemy.GetHpSlide();
-            enemySlide.maxValue = maxHp;
+            enemySlide.maxValue = enemy.maxHp;
             enemySlide.minValue = 0;
             enemySlide.value = enemy.hp;
 

@@ -58,15 +58,13 @@ public class RootBattleInit : BaseMono
             MyDBManager.GetInstance().ConnDB();
             for (int i = 0; i < enemyRoleIds.Length; i++)
             {
-                MyDBManager.RoleInfo enemyRoleInfo = MyDBManager.GetInstance().GetRoleInfo(enemyRoleIds[i]);
-                List<Shentong> enemyRoleShentongs = MyDBManager.GetInstance().GetRoleShentong(enemyRoleIds[i], 1);
                 for (int j = 0; j < countOfEnemyRole[i]; j++)
                 {
                     GameObject enemyRolePrefab = Resources.Load<GameObject>(enemyRolePrefabPath[i]);
                     GameObject enemyRoleGameObj = Instantiate(enemyRolePrefab);
                     Enemy enemyCS = enemyRoleGameObj.AddComponent<Enemy>();
-                    enemyCS.Init(enemyRoleInfo, enemyRoleShentongs);
-                    enemyCS.InitRoleBattelePos(6 + i, 6 + i); //todo
+                    enemyCS.Init(7);
+                    enemyCS.InitRoleBattelePos(7 + j*2, 7 + j*2); //todo
                     roleList.Add(enemyRoleGameObj);
                 }
             }

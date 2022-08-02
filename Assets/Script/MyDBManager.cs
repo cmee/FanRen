@@ -121,11 +121,14 @@ public class MyDBManager
             int planeRadius = (int)((Int64)sdr["planeRadius"]); //面类型的攻击范围“半径”
             string effPath = (string)sdr["effPath"];
             string soundEffPath = (string)sdr["soundEffPath"];
+            int unitDistance = (int)((Int64)sdr["unitDistance"]); //神通攻击距离
+            int needMp = (int)((Int64)sdr["needMp"]);
 
             Shentong shenTong = new Shentong();
             shenTong.shenTongId = shenTongId;
             shenTong.isActive = isActive;
             shenTong.roleId = roleId;
+
             shenTong.shenTongName = shenTongName;
             shenTong.damage = damage;
             shenTong.defence = defence;
@@ -136,6 +139,8 @@ public class MyDBManager
             shenTong.planeRadius = planeRadius;
             shenTong.effPath = effPath;
             shenTong.soundEffPath = soundEffPath;
+            shenTong.unitDistance = unitDistance;
+            shenTong.needMp = needMp;
 
             roleShentong.Add(shenTong);
         }

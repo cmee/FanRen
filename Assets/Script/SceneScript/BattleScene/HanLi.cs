@@ -27,7 +27,7 @@ public class HanLi : BaseRole
 
         //InitRoleData(100, 100, 50, 50, 10, 4, shentongs, 13, 1, TeamNum.TEAM_ONE);
 
-        InitRoleData(roleInfo.currentHp, roleInfo.maxHp, roleInfo.currentMp, roleInfo.maxMp, roleInfo.gongJiLi, roleInfo.fangYuLi, tmp, roleInfo.speed, roleInfo.roleId, TeamNum.TEAM_ONE);
+        InitRoleData(roleInfo.currentHp, roleInfo.maxHp, roleInfo.currentMp, roleInfo.maxMp, roleInfo.gongJiLi, roleInfo.fangYuLi, tmp, roleInfo.speed, roleInfo.roleId, TeamNum.TEAM_ONE, roleInfo.name);
 
         //Slider slide = GetSlide();
         //slide.maxValue = 100;
