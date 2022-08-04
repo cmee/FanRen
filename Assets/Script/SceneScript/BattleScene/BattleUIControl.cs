@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleUIControl : BaseMono
@@ -13,6 +14,8 @@ public class BattleUIControl : BaseMono
     private GameObject[] buttons = new GameObject[12];
 
     private List<GameObject> allRole;
+
+    public GameObject winUIGameObj;
 
     //private List<SlideAvatarController> allSlideAvatarCS = new List<SlideAvatarController>();
 
@@ -86,7 +89,7 @@ public class BattleUIControl : BaseMono
 
 
 
-    }     
+    }
 
     //public void OnRoleSelected(BaseRole selectedRoleCS)
     //{
@@ -95,6 +98,55 @@ public class BattleUIControl : BaseMono
     //    passButton.SetActive(true);
     //    resetButton.SetActive(true);
     //}
+
+    private bool isWin;
+
+    //战斗结束回调
+    public void OnBattleEnd(bool isWin)
+    {
+        this.isWin = isWin;
+        winUIGameObj.transform.SetParent(null); //为了让结束界面在最上面
+        winUIGameObj.transform.SetParent(this.transform);
+        winUIGameObj.SetActive(true);
+
+        WinUIScript battleEndUIScript = winUIGameObj.GetComponent<WinUIScript>();
+
+        if (isWin)
+        {
+            //todo 战利品显示
+        }
+        else
+        {
+            Camera.main.GetComponent<SceneMusic>().StopBGM();
+            //todo 播放小段悲惨音乐
+            battleEndUIScript.winTextGO.GetComponent<Text>().text = "战斗失败，身死道消";
+            battleEndUIScript.winTextGO2.SetActive(false);
+            battleEndUIScript.gridLayout.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (winUIGameObj.activeInHierarchy && winUIGameObj.activeSelf && Input.GetKeyUp(KeyCode.Space))
+        {
+            if (isWin)
+            {
+                int lastSceneIndex = SaveUtil.GetLastSceneBuildIndex();
+                if(lastSceneIndex >= 0)
+                {
+                    SceneManager.LoadScene(lastSceneIndex);
+                }
+                else
+                {
+                    Debug.LogError("lastSceneIndex < 0");
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
 
     public void OnChangeRoleAction(GameObject activingRoleGO)
     {
@@ -118,6 +170,9 @@ public class BattleUIControl : BaseMono
 
     public void OnClickPassButton()
     {
+
+        GameObject.FindGameObjectWithTag("Terrain").GetComponent<BattleController>().OnClickPass();
+
         HideAllShentongButton();
         passButton.SetActive(false);
         resetButton.SetActive(false);

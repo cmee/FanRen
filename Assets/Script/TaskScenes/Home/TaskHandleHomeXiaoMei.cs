@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 //获取3个红浆果任务
@@ -7,10 +8,10 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
 
     public const int ROLE_ID = 2;
 
-    public override Queue TriggerTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId)
     {
         Debug.Log("TriggerTaskTalkData taskId : " + taskId);
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "xiaoMei",
@@ -28,16 +29,16 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue InProgressTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId)
     {
         Debug.Log("InProgressTaskTalkData taskId : " + taskId);
         return TriggerTaskTalkData(taskId);
     }
 
-    public override Queue SubmitTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId)
     {
         Debug.Log("SubmitTaskTalkData taskId : " + taskId);
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "hanLi",
@@ -55,12 +56,12 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue GeneralTalkData()
+    public override Queue<TalkContentItemModel> GeneralTalkData()
     {
         Debug.Log("GeneralTalkData");
         MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(2); //2是小妹的唯一任务id，查文档（数据库）可知
-        Queue allTalkContent = new Queue();
+        RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(2); //2是小妹的唯一任务id，查文档（数据库）可知
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         if (roleTask.taskState == (int)FRTaskState.Finished) //任务已经完成
         {
             TalkContentItemModel talkContentItemModel = new TalkContentItemModel
@@ -85,7 +86,7 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
     {
         Debug.Log("IsSubmitable");
         MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(2); //2是红浆果  
+        RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(2); //2是红浆果  
         return roleItem.itemCount >= 3;
     }
 
@@ -93,7 +94,7 @@ public class TaskHandleHomeXiaoMei : ITaskHandle
     {
         Debug.Log("红浆果数量-3，心境+1");
         MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(2);
+        RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(2);
         MyDBManager.GetInstance().DeleteItemInBag(2, 3, roleItem.itemCount);
     }
 

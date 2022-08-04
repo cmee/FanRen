@@ -61,7 +61,7 @@ public class BattleController : BaseMono
         DoSelectRole(roleGO);
     }
 
-    //待机
+    //点击了待机按钮回调,此方法只允许外部调用，不允许内部调用
     public void OnClickPass()
     {
         if (isPlayingAnim) return;
@@ -74,7 +74,7 @@ public class BattleController : BaseMono
         if (selectedRoleCS.battleToPosX != selectedRoleCS.battleOriginPosX) selectedRoleCS.battleOriginPosX = selectedRoleCS.battleToPosX;
         if (selectedRoleCS.battleToPosZ != selectedRoleCS.battleOriginPosZ) selectedRoleCS.battleOriginPosZ = selectedRoleCS.battleToPosZ;
 
-        GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnClickPassButton();
+        //GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnClickPassButton();
         activingRoleGO = null;
 
         for(int i=0; i<width; i++)
@@ -530,11 +530,22 @@ public class BattleController : BaseMono
         if (enemyCount == 0)
         {
             //敌人死光了，显示对应画面
-            Debug.LogError("敌人死光了，显示对应画面");
+            if (this.activingRoleGO.GetComponent<HanLi>() != null)
+            {
+                Debug.Log("我方胜利，显示对应画面");
+                PlayerPrefs.SetInt(RootBattleInit.triggerToBattleGameObjUnionPreKey, 1); //关闭战斗触发器
+                GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnBattleEnd(true);
+            }
+            else
+            {
+                Debug.Log("我方失败，显示对应画面");
+                GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnBattleEnd(false);
+            }
         }
         else
         {
-            OnClickPass();
+            //OnClickPass();
+            GameObject.FindGameObjectWithTag("UI_Canvas").GetComponent<BattleUIControl>().OnClickPassButton();
         }
     }
 

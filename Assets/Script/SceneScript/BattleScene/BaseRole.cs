@@ -79,7 +79,7 @@ public class BaseRole : BaseMono
     public void UpdateHP(int damage)
     {
         this.hp -= damage;
-        Debug.LogError(this.name + "更新血条 enemy.maxHp " + this.maxHp + ", enemy.hp " + this.hp);
+        Debug.Log(this.name + "更新血条 enemy.maxHp " + this.maxHp + ", enemy.hp " + this.hp);
         Slider enemySlide = this.hpGO.GetComponent<Slider>();
         enemySlide.maxValue = this.maxHp;
         enemySlide.minValue = 0;

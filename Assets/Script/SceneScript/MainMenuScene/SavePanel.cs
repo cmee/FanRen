@@ -17,7 +17,7 @@ public class SavePanel : BaseMono
     public void OnGoHeadButtonClick()
     {
         Debug.Log("OnGoHeadButtonClick");
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
     }
 
     public void OnClosePanelClick()

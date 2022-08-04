@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleField.unity
     guid: a4ae17ccfd8171f48923dfb21065a1ab
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Home_shan.unity
     guid: e36d2ef01769f6a4596313a88e068a08
   - enabled: 1
     path: Assets/Scenes/FirstScene_GameDesc.unity
     guid: a2ca422245de15248904aa7bc032acfc
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 5ce5c5eb84c730344bcc2aeab2c5a02e
   m_configObjects: {}

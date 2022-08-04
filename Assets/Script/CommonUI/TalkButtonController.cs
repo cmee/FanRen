@@ -28,40 +28,31 @@ public class TalkButtonController : MonoBehaviour
         texts = talkUIGO.GetComponentsInChildren<Text>();
     }
 
-    public void ShowTalkButton(NPCCommonScript npcCommonScript)
+    public void ShowTalkButton(int roleId)
     {
         talkButton.alpha = 1;
         talkButton.interactable = true;
         talkButton.blocksRaycasts = true;
 
-        //this.dfAvatar = avatar;
-        //this.dfName = name;
-        //this.dfTalkContent = talkContent;
-        //this.allTalkContentOriginData = allTalkContentOriginData;
-        //HandlerTalkData(allTalkContentOriginData);
+        //this.npcCommonScript = npcCommonScript;
+        this.roleId = roleId;
 
-        this.npcCommonScript = npcCommonScript;
-
-        //Debug.Log("this.allTalkContentOriginData count : " + this.allTalkContentOriginData.Count);
 
     }
 
-    //string dfAvatar;
-    //string dfName;
-    //string dfTalkContent;
+    //NPCCommonScript npcCommonScript;
+    int roleId;
+    Queue<TalkContentItemModel> allTalkContentOriginData;
+    Queue<TalkContentItemModel> allTalkContentHandleData = new Queue<TalkContentItemModel>();
 
-    NPCCommonScript npcCommonScript;
-    Queue allTalkContentOriginData;
-    Queue allTalkContentHandleData = new Queue();
-
-    private void HandleOriginTalkData(Queue allTalkContentOriginData)
+    private void HandleOriginTalkData()
     {
         //allTalkContentHandleData = new Queue();
         allTalkContentHandleData.Clear();
-        while (allTalkContentOriginData.Count > 0)
+        while (this.allTalkContentOriginData.Count > 0)
         {
 
-            TalkContentItemModel item = (TalkContentItemModel)allTalkContentOriginData.Dequeue();
+            TalkContentItemModel item = this.allTalkContentOriginData.Dequeue();
 
             //Debug.Log("while item : " + item.dfTalkContent);
 
@@ -148,14 +139,14 @@ public class TalkButtonController : MonoBehaviour
     {
         MyDBManager.GetInstance().ConnDB();
 
-        List<MyDBManager.RoleTask> leaderActorWithNPCSubmitTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCSubmitTasks(npcCommonScript.roleId);
+        List<RoleTask> leaderActorWithNPCSubmitTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCSubmitTasks(this.roleId);
 
-        ITaskHandle taskHandle = ITaskHandle.TaskHandleBuilder.Build(npcCommonScript.roleId);
+        ITaskHandle taskHandle = ITaskHandle.TaskHandleBuilder.Build(this.roleId);
 
         if(leaderActorWithNPCSubmitTasks.Count > 0) //该NPC有对应的提交任务
         {
-            MyDBManager.RoleTask inProgressTask = null;
-            foreach (MyDBManager.RoleTask task in leaderActorWithNPCSubmitTasks)
+            RoleTask inProgressTask = null;
+            foreach (RoleTask task in leaderActorWithNPCSubmitTasks)
             {
                 if(task.taskState == (int)FRTaskState.InProgress)
                 {
@@ -200,15 +191,15 @@ public class TalkButtonController : MonoBehaviour
 
     private void TryGetTask(ITaskHandle taskHandle)
     {
-        List<MyDBManager.RoleTask> leaderActorWithNPCTriggerTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCTriggerTasks(npcCommonScript.roleId);
+        List<RoleTask> leaderActorWithNPCTriggerTasks = MyDBManager.GetInstance().GetAllLeaderActorWithNPCTriggerTasks(this.roleId);
         if (leaderActorWithNPCTriggerTasks.Count == 0) //该NPC没有可触发任务
         {
             this.allTalkContentOriginData = taskHandle.GeneralTalkData(); //无任务NPC的对话也有可能跟着进程发生改变
         }
         else //与该NPC有任务
         {
-            MyDBManager.RoleTask inProgressTask = null;
-            foreach (MyDBManager.RoleTask rt in leaderActorWithNPCTriggerTasks)
+            RoleTask inProgressTask = null;
+            foreach (RoleTask rt in leaderActorWithNPCTriggerTasks)
             {
                 if (rt.taskState == (int)FRTaskState.InProgress) //进行中的任务(同一个NPC只会同时存在一个)
                 {
@@ -222,8 +213,8 @@ public class TalkButtonController : MonoBehaviour
             }
             else //没有正在进行中的
             {
-                MyDBManager.RoleTask unTriggerTask = null;
-                foreach (MyDBManager.RoleTask rt in leaderActorWithNPCTriggerTasks)
+                RoleTask unTriggerTask = null;
+                foreach (RoleTask rt in leaderActorWithNPCTriggerTasks)
                 {
                     if (rt.taskState == (int)FRTaskState.Untrigger) //最靠前的未触发的任务
                     {
@@ -255,33 +246,15 @@ public class TalkButtonController : MonoBehaviour
         }
     }
 
-    //int CalculateLengthOfText(string message, Text tex)
-    //{
-    //    int totalLength = 0;
-    //    Font myFont = tex.font;  //chatText is my Text component
-    //    myFont.RequestCharactersInTexture(message, tex.fontSize, tex.fontStyle);
-    //    CharacterInfo characterInfo;
-    //    char[] arr = message.ToCharArray();
-    //    foreach (char c in arr)
-    //    {
-    //        myFont.GetCharacterInfo(c, out characterInfo, tex.fontSize);
-    //        totalLength += characterInfo.advance;
-    //    }
-    //    return totalLength;
-    //}
-
-    //private float CalcTextWidth(Text text)
-    //{
-    //    TextGenerator tg = text.cachedTextGeneratorForLayout;
-    //    TextGenerationSettings setting = text.GetGenerationSettings(Vector2.zero);
-    //    float width = tg.GetPreferredWidth(text.text, setting) / text.pixelsPerUnit;
-    //    //Debug.Log("width = " + width.ToString());
-    //    return width;
-    //}
+    public void ShowTalkUIWith(Queue<TalkContentItemModel> allTalkContentOriginData)
+    {
+        this.allTalkContentOriginData = allTalkContentOriginData;
+        ShowTalkUI();
+    }
 
     private void ShowTalkUI()
     {
-        HandleOriginTalkData(this.allTalkContentOriginData);
+        HandleOriginTalkData();
 
         talkUI.alpha = 1;
         talkUI.interactable = true;

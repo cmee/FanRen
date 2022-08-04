@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TaskHandleHomeHanMu : ITaskHandle
@@ -6,20 +7,20 @@ public class TaskHandleHomeHanMu : ITaskHandle
 
     public const int ROLE_ID = 4;
 
-    public override Queue TriggerTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId)
     {
         Debug.LogError("逻辑错误，不应该有此打印 TaskHandleHomeHanMu TriggerTaskTalkData " + taskId);
         return null;
     }
 
-    public override Queue InProgressTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId)
     {
         return SubmitTaskTalkData(taskId);
     }
 
-    public override Queue SubmitTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId)
     {
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "hanMu",
@@ -30,11 +31,11 @@ public class TaskHandleHomeHanMu : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue GeneralTalkData()
+    public override Queue<TalkContentItemModel> GeneralTalkData()
     {
         MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(4); //告别韩母任务
-        Queue allTalkContent = new Queue();
+        RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(4); //告别韩母任务
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         if (roleTask.taskState == (int)FRTaskState.Untrigger)
         {
             TalkContentItemModel talkContentItemModel = new TalkContentItemModel

@@ -23,16 +23,11 @@ public class HanLi : BaseRole
             tmp[i] = shenTongList[i];
         }
 
-        MyDBManager.RoleInfo roleInfo = MyDBManager.GetInstance().GetRoleInfo(1);
+        RoleInfo roleInfo = MyDBManager.GetInstance().GetRoleInfo(1);
 
-        //InitRoleData(100, 100, 50, 50, 10, 4, shentongs, 13, 1, TeamNum.TEAM_ONE);
-
+        //InitRoleData(roleInfo.currentHp, roleInfo.maxHp, roleInfo.currentMp, roleInfo.maxMp, roleInfo.gongJiLi, roleInfo.fangYuLi, tmp, roleInfo.speed, roleInfo.roleId, TeamNum.TEAM_ONE, roleInfo.roleName, roleInfo.roleName);
         InitRoleData(roleInfo.currentHp, roleInfo.maxHp, roleInfo.currentMp, roleInfo.maxMp, roleInfo.gongJiLi, roleInfo.fangYuLi, tmp, roleInfo.speed, roleInfo.roleId, TeamNum.TEAM_ONE, roleInfo.roleName, roleInfo.roleName);
 
-        //Slider slide = GetSlide();
-        //slide.maxValue = 100;
-        //slide.minValue = 0;
-        //slide.value = 100;
     }
 
 }

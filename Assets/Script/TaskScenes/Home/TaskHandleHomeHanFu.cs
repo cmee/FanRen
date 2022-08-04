@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TaskHandleHomeHanFu : ITaskHandle
@@ -6,9 +7,9 @@ public class TaskHandleHomeHanFu : ITaskHandle
 
     public const int ROLE_ID = 3;
 
-    public override Queue TriggerTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId)
     {
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "hanFu",
@@ -35,7 +36,7 @@ public class TaskHandleHomeHanFu : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue InProgressTaskTalkData(int taskId)  //A NPC触发，B NPC提交的情况
+    public override Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId)  //A NPC触发，B NPC提交的情况
     {
         if(taskId == 1) //干柴任务，触发、提交同人
         {
@@ -43,7 +44,7 @@ public class TaskHandleHomeHanFu : ITaskHandle
         }
         else if (taskId == 5) //告别任务，触发、提交不同人
         {
-            Queue allTalkContent = new Queue();
+            Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
             TalkContentItemModel talkContentItemModel = new TalkContentItemModel
             {
                 dfAvatar = "hanFu",
@@ -58,9 +59,9 @@ public class TaskHandleHomeHanFu : ITaskHandle
         //return TriggerTaskTalkData(taskId);
     }
 
-    public override Queue SubmitTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId)
     {
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         if (taskId == 1) //提交收集干柴任务
         {
             TalkContentItemModel talkContentItemModel = new TalkContentItemModel
@@ -84,13 +85,13 @@ public class TaskHandleHomeHanFu : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue GeneralTalkData()
+    public override Queue<TalkContentItemModel> GeneralTalkData()
     {
         MyDBManager.GetInstance().ConnDB();
-        MyDBManager.RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(1);
-        MyDBManager.RoleTask roleTask2 = MyDBManager.GetInstance().GetRoleTask(5);
+        RoleTask roleTask = MyDBManager.GetInstance().GetRoleTask(1);
+        RoleTask roleTask2 = MyDBManager.GetInstance().GetRoleTask(5);
 
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         if (roleTask.taskState == (int)FRTaskState.Untrigger) //未接任务
         {
             Debug.LogError("逻辑错误 TaskHandleHomeHanFu GeneralTalkData");
@@ -130,7 +131,7 @@ public class TaskHandleHomeHanFu : ITaskHandle
         if(taskId == 1)
         {
             MyDBManager.GetInstance().ConnDB();
-            MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1); //1是干柴
+            RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1); //1是干柴
             return roleItem.itemCount >= 5;
         }
         else if(taskId == 5) //告别
@@ -147,7 +148,7 @@ public class TaskHandleHomeHanFu : ITaskHandle
         {
             Debug.Log("干柴>=5，-5干柴");
             MyDBManager.GetInstance().ConnDB();
-            MyDBManager.RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1);
+            RoleItem roleItem = MyDBManager.GetInstance().GetRoleItem(1);
             MyDBManager.GetInstance().DeleteItemInBag(1, 5, roleItem.itemCount);
         }else if (taskId == 5)
         {

@@ -6,9 +6,9 @@ public class TaskHandleHomeHanZhu : ITaskHandle
 {
 
     public const int ROLE_ID = 5;
-    public override Queue GeneralTalkData()
+    public override Queue<TalkContentItemModel> GeneralTalkData()
     {
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "hanZhu",
@@ -19,7 +19,7 @@ public class TaskHandleHomeHanZhu : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue InProgressTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId)
     {
         throw new System.NotImplementedException();
     }
@@ -44,12 +44,12 @@ public class TaskHandleHomeHanZhu : ITaskHandle
         throw new System.NotImplementedException();
     }
 
-    public override Queue SubmitTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId)
     {
         throw new System.NotImplementedException();
     }
 
-    public override Queue TriggerTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId)
     {
         throw new System.NotImplementedException();
     }

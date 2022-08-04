@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TaskHandleHomeSanShu : ITaskHandle
@@ -6,7 +7,7 @@ public class TaskHandleHomeSanShu : ITaskHandle
 
     public const int ROLE_ID = 6;
 
-    public override Queue TriggerTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId)
     {
         //接任务 【和韩父告别】【和韩母告别】
         //MyDBManager.GetInstance().ConnDB();
@@ -15,7 +16,7 @@ public class TaskHandleHomeSanShu : ITaskHandle
         //UIUtil.NotifyTaskUIDatasetChanged();
 
 
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "hanLi",
@@ -36,19 +37,19 @@ public class TaskHandleHomeSanShu : ITaskHandle
         return allTalkContent;
     }
 
-    public override Queue InProgressTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId)
     {
         return TriggerTaskTalkData(taskId);
     }
 
-    public override Queue SubmitTaskTalkData(int taskId)
+    public override Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId)
     {
         throw new System.NotImplementedException();
     }
 
-    public override Queue GeneralTalkData()
+    public override Queue<TalkContentItemModel> GeneralTalkData()
     {
-        Queue allTalkContent = new Queue();
+        Queue<TalkContentItemModel> allTalkContent = new Queue<TalkContentItemModel>();
         TalkContentItemModel talkContentItemModel = new TalkContentItemModel
         {
             dfAvatar = "sanShu",

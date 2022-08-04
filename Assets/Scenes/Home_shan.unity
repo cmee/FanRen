@@ -391,9 +391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u5E72\u67F4"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 1
   itemType: 13
 --- !u!114 &112232851
@@ -1022,9 +1023,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u5E72\u67F4"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 1
   itemType: 13
 --- !u!136 &349983946
@@ -1496,6 +1498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d8aa2e1b330c94e8ecbc2c50f34c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   roleId: 07000000
   countOfRoleId: 02000000
   rolePrefabPath:
@@ -1832,9 +1836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u5E72\u67F4"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 1
   itemType: 13
 --- !u!136 &652382413
@@ -1963,9 +1968,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u5E72\u67F4"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 1
   itemType: 13
 --- !u!136 &756138574
@@ -2725,6 +2731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a444a116d4ad151418a59d264f0be731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
   gameObjectType: 0
   globalMusicPrefab: {fileID: 7075180237560543165, guid: 84da89b80ccc727439a396f445dc29aa, type: 3}
 --- !u!1 &1098461847
@@ -2950,6 +2957,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 210455771}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1275108638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275108640}
+  - component: {fileID: 1275108639}
+  m_Layer: 0
+  m_Name: SceneInit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1275108639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275108638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203e808b7ded70945a8a60e75f287fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1275108640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275108638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 919.1102, y: 420.54977, z: -2.865242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344398688
 GameObject:
@@ -3237,9 +3288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u7EA2\u6D46\u679C"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 2
   itemType: 13
 --- !u!65 &1431153529
@@ -3522,9 +3574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u7EA2\u6D46\u679C"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 2
   itemType: 13
 --- !u!65 &1570187448
@@ -3730,9 +3783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u7EA2\u6D46\u679C"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 2
   itemType: 13
 --- !u!65 &1691947158
@@ -4211,9 +4265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d763c69e7fcca4a8148a45a1b85f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
+  gameObjectType: 0
   wuPinName: "\u5E72\u67F4"
   wuPinCount: 1
-  uniquePrefenceKey: 
   itemId: 1
   itemType: 13
 --- !u!136 &1936270561
@@ -4872,8 +4927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709da033c3b70c743968fd4b0685851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
   gameObjectType: 0
-  targetSceneIndex: 3
+  targetSceneIndex: 5
 --- !u!1001 &3689082339160764587
 PrefabInstance:
   m_ObjectHideFlags: 0

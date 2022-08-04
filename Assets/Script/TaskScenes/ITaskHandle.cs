@@ -1,16 +1,17 @@
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ITaskHandle
 {
 
-    public abstract Queue TriggerTaskTalkData(int taskId);
-    public abstract Queue InProgressTaskTalkData(int taskId);//一般和TriggerTaskTalkData相同
-    public abstract Queue SubmitTaskTalkData(int taskId);
+    public abstract Queue<TalkContentItemModel> TriggerTaskTalkData(int taskId);
+    public abstract Queue<TalkContentItemModel> InProgressTaskTalkData(int taskId);//一般和TriggerTaskTalkData相同
+    public abstract Queue<TalkContentItemModel> SubmitTaskTalkData(int taskId);
 
     //一般性对话，一般是无任务NPC使用
-    public abstract Queue GeneralTalkData();
+    public abstract Queue<TalkContentItemModel> GeneralTalkData();
 
     public abstract bool IsTriggerable(int taskId);//任务是否可触发
 

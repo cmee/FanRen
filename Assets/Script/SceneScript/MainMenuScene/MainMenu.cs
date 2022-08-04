@@ -26,6 +26,11 @@ public class MainMenu : BaseMono
         {
             jumpVideoButton.SetActive(true);
         }
+
+        if (PlayerControl.IS_DEBUG)
+        {
+            jumpVideoButton.SetActive(true);
+        }
     }
 
     void EndVideo(VideoPlayer video)
@@ -79,6 +84,20 @@ public class MainMenu : BaseMono
         Debug.Log("OnStartButtonClick");
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         //SceneManager.UnloadSceneAsync(0, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+    }
+
+    public void OnResumeButtonClick()
+    {
+        Debug.Log("OnResumeButtonClick");
+        int sceneIndex = SaveUtil.GetLastSceneBuildIndex();
+        if(sceneIndex >= 0)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+        else
+        {
+            Debug.LogError("Êý¾Ý´íÎó sceneIndex " + sceneIndex);
+        }
     }
 
     public void OnReplayButtonClick()

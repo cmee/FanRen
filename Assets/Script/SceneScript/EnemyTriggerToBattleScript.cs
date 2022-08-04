@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyTriggerToBattleScript : MonoBehaviour, IColliderWithCC
+public class EnemyTriggerToBattleScript : BaseMono, IColliderWithCC
 {
 
     public int[] roleId;
@@ -9,6 +9,11 @@ public class EnemyTriggerToBattleScript : MonoBehaviour, IColliderWithCC
     public int[] countOfRoleId;
 
     public string[] rolePrefabPath;
+
+    private void Start()
+    {
+        ShowOrHideGameObjByUniquePrefenceKey();
+    }
 
     public void OnPlayerCollisionEnter(GameObject player)
     {
@@ -19,6 +24,9 @@ public class EnemyTriggerToBattleScript : MonoBehaviour, IColliderWithCC
             RootBattleInit.enemyRoleIds = roleId;
             RootBattleInit.countOfEnemyRole = countOfRoleId;
             RootBattleInit.enemyRolePrefabPath = rolePrefabPath;
+            RootBattleInit.triggerToBattleGameObjUnionPreKey = this.uniquePrefenceKey;
+
+            SaveUtil.SaveGameObjLastState(player);
 
             SceneManager.LoadScene(2);
         }

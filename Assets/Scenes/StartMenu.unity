@@ -655,7 +655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40988b8c8c361749abbb9ac2d484ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBGMPath: 
 --- !u!1 &415970514
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce767eb0d825fa74b9b2d223d3db5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
   gameObjectType: 0
 --- !u!114 &450805286
 MonoBehaviour:
@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6484ded030dc9ed43a562f6754834d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniquePrefenceKey: 
   gameObjectType: 0
   videoPlayerGO: {fileID: 1399777414}
   buttonContainer: {fileID: 780855621}
@@ -1410,7 +1411,6 @@ GameObject:
   - component: {fileID: 694488476}
   - component: {fileID: 694488479}
   - component: {fileID: 694488480}
-  - component: {fileID: 694488481}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1565,18 +1565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67bb6d02095167438cdc49a76de30c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &694488481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694488474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cb69d673ee0b0a438f596970403c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &707827471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1000, y: 185}
+  m_AnchoredPosition: {x: 999.99994, y: 185}
   m_SizeDelta: {x: 468, y: 341.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780855623
@@ -2784,6 +2772,18 @@ MonoBehaviour:
       - m_Target: {fileID: 450805285}
         m_TargetAssemblyTypeName: SavePanel, Assembly-CSharp
         m_MethodName: OnGoHeadButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 546399085}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OnResumeButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

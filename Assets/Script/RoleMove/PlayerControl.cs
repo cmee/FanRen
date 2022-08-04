@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
+    public const bool IS_DEBUG = true;
+
     public Camera playerCamera;
     private Animator animator;
 
@@ -22,6 +24,43 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         //debug
+        //PlayerPrefs.DeleteAll();
+
+        int lastSceneIndex = SaveUtil.GetLastSceneBuildIndex();
+        if (lastSceneIndex >= 0 && lastSceneIndex == this.gameObject.scene.buildIndex) //有保存记录,且保存场景和当前一样，说明是返回或者读档
+        {
+            Debug.LogWarning("=================正在返回前面的场景 或者 读档最后保存的场景");
+            Vector3 position = SaveUtil.GetLastPosition();
+            if (position != Vector3.zero)
+            {
+                this.transform.position = position;
+                enabled = true;
+                this.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
+            else
+            {
+                Debug.LogError("数据错误 position is 0");
+            }
+        }
+        else
+        {
+            //每次创建主角(加载新场景)保存或者进入战斗前保存
+            if (enabled)
+            {
+                //Debug.LogWarning("=================正在保存角色数据");
+                SaveUtil.SaveGameObjLastState(this.gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("=================PlayerControl组件关闭，无需保存角色数据");
+            }
+        }
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        Debug.LogWarning("OnApplicationQuit()");
         PlayerPrefs.DeleteAll();
     }
 
@@ -57,7 +96,7 @@ public class PlayerControl : MonoBehaviour
         }
         CollisionFlags cf = cc.Move(this.moveDir / 8);
         //Debug.Log(this.moveDir);
-        if (colliderWithCCScript != null && cf == CollisionFlags.None && (this.moveDir.x != 0f || this.moveDir.y != 0f))
+        if (colliderWithCCScript != null && ((MonoBehaviour)colliderWithCCScript).gameObject.activeInHierarchy && cf == CollisionFlags.None && (this.moveDir.x != 0f || this.moveDir.y != 0f))
         {
             colliderWithCCScript.OnPlayerCollisionExit(this.gameObject);
             lastHitGameObject = null;

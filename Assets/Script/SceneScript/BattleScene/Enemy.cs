@@ -24,7 +24,7 @@ public class Enemy : BaseRole
 
         //InitRoleData(100, 100, 50, 10, 5, shentongs, 11, 2, TeamNum.TEAM_TWO);
 
-        MyDBManager.RoleInfo enemyRoleInfo = MyDBManager.GetInstance().GetRoleInfo(roleId);
+        RoleInfo enemyRoleInfo = MyDBManager.GetInstance().GetRoleInfo(roleId);
         List<Shentong> enemyRoleShentongs = MyDBManager.GetInstance().GetRoleShentong(roleId, 1);
 
         Shentong[] tmp = new Shentong[12];

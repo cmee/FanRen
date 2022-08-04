@@ -47,6 +47,11 @@ public class SceneMusic : BaseMono
         musicObject = Instantiate(globalMusicPrefab);
     }
 
+    public void StopBGM()
+    {
+        if(musicObject != null) Destroy(musicObject);
+    }
+
     // Update is called once per frame
     void Update()
     {

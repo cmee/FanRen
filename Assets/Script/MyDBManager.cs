@@ -150,26 +150,7 @@ public class MyDBManager
         return roleShentong;
     }
 
-    //角色信息
-    public class RoleInfo
-    {
-        public int roleId;
-        public string roleName;
-        public int currentHp;
-        public int maxHp;
-        public int currentMp;
-        public int maxMp;
-        public int speed;
-        public int gongJiLi;
-        public int fangYuLi;
-    }
-
-    //角色拥有的物品
-    public class RoleItem{
-        public int itemId;
-        public int itemCount;
-        public int itemType;
-    }
+    
 
     public RoleItem GetRoleItem(int itemId)
     {
@@ -217,18 +198,6 @@ public class MyDBManager
             sqliteCommand2.Dispose();
             return result;
         }
-    }
-
-    //角色任务
-    public class RoleTask
-    {
-        public int taskId;
-        public int taskState;
-        public string remark;
-        public int isMainTask;
-        public int storyLineIndex;
-        public int triggerRoleId;
-        public int submitRoleId;
     }
 
     //查询某个任务
@@ -493,4 +462,65 @@ public class MyDBManager
         }
     }
 
+}
+
+//角色任务
+public class RoleTask
+{
+    public int taskId;
+    public int taskState;
+    public string remark;
+    public int isMainTask;
+    public int storyLineIndex;
+    public int triggerRoleId;
+    public int submitRoleId;
+}
+
+//角色信息
+public class RoleInfo
+{
+    public int roleId;
+    public string roleName;
+    public int currentHp;
+    public int maxHp;
+    public int currentMp;
+    public int maxMp;
+    public int speed;
+    public int gongJiLi;
+    public int fangYuLi;
+}
+
+//角色拥有的物品
+public class RoleItem
+{
+    public int itemId;
+    public int itemCount;
+    public int itemType;
+}
+
+//任务状态
+public enum FRTaskState
+{
+    InProgress = 1, //进行种
+    Finished = 2, //完成
+    Fail = 3, //失败
+    Untrigger = 0 //还没有触发
+}
+
+//物品类型
+public enum FRItemType
+{
+    Fabao = 1,//法宝
+    CaiLiao = 2,//材料
+    LingCao = 3,//灵草
+    DanYao = 4,//丹药
+    LingShou = 5,//灵兽
+    LingChong = 6,//灵虫
+    GongFa = 7,//功法
+    DanFang = 8,//丹方
+    Other = 9,//其他
+    KuiLei = 10,//傀儡
+    TianDiLingWu = 11,//天地灵物
+    ShenTong = 12,//神通
+    Story = 13//剧情
 }

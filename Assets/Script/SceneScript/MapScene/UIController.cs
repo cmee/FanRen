@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     //»•ŒÂ¿Ôπµ
     public void OnWuLiGouClick()
     {
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(5, LoadSceneMode.Single);
     }
 
 }

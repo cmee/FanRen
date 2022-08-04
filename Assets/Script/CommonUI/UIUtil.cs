@@ -19,12 +19,12 @@ public class UIUtil
             }
         }
         MyDBManager.GetInstance().ConnDB();
-        List<MyDBManager.RoleTask> roleTasks = MyDBManager.GetInstance().GetAllLeaderActorInProgressTasks();
+        List<RoleTask> roleTasks = MyDBManager.GetInstance().GetAllLeaderActorInProgressTasks();
         if (roleTasks.Count > 0)
         {
             topGO.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
             GameObject cellPrefab = Resources.Load<GameObject>("Prefab/TaskUICell");
-            foreach (MyDBManager.RoleTask item in roleTasks)
+            foreach (RoleTask item in roleTasks)
             {
                 GameObject cellGameObject = GameObject.Instantiate(cellPrefab);
                 cellGameObject.GetComponent<Text>().text = item.remark;
